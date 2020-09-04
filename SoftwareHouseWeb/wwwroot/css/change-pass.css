@@ -1,0 +1,134 @@
+.container{
+  
+    display: grid;
+    grid-template-columns: minmax(5rem,1fr) 120rem minmax(5rem,1fr) ;
+    background: rgba(82, 82, 82, 0.178);
+    grid-template-areas: ". main ."
+                        "foot foot foot";
+    grid-template-rows: minmax(80vh,min-content) 20vh;
+    font-family: var(--raleway);
+}
+.main{
+grid-area: main;
+background: white;
+display: grid;
+grid-template-rows: 10fr 20fr 70fr;
+grid-template-columns: 10fr 80fr 10fr;
+grid-template-areas: ". crums ."
+                    ". chead ."
+                    ". form .";
+}
+.crums
+{
+    grid-area: crums;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+.crums > *{
+    margin: 0 6px;
+}
+.crums a{
+    color: teal;
+}
+.chead{
+    grid-area: chead;
+    display: grid;
+}
+
+.form-section{
+    grid-area: form;
+}
+form{
+    height: 70%;
+    display: grid;
+    grid-template-rows: repeat(5,20fr);
+    grid-template-columns: 40fr 60fr;
+    grid-template-areas: "xa xa"
+                        "old oldfield"
+                        "new newfield"
+                        "re refield"
+                        "btn btn";
+border: 1px solid rgba(43, 43, 43, 0.24);
+}
+form > div{
+    border-bottom: 1px solid rgba(43, 43, 43, 0.24);
+}
+form input{
+    height: 2rem !important;
+    width: 40rem !important;
+    font-size: 14px !important;
+}
+.xa{
+    grid-area: xa;
+}
+.old , .new , .re{
+border-right: 1px solid rgba(43, 43, 43, 0.24);
+}
+form  div:nth-child(odd){
+    display: flex;
+    align-items: center;
+
+}
+form  div:nth-child(even){
+display: flex;
+justify-content: flex-end;
+align-items: center;
+}
+form  div:nth-child(even) > *{
+    margin-right: 1rem;
+}
+
+form  div:nth-child(odd) > *{
+    margin-left: 1.5rem !important;
+}
+.old{
+    grid-area: old;
+}
+.old-field{
+    grid-area: oldfield;
+}
+.new{
+    grid-area: new;
+}
+.new-field{
+    grid-area: newfield;
+}
+.re{
+    grid-area: re;
+}
+.re-field{
+    grid-area: refield;
+}
+.btn{
+    grid-area: btn;
+    display: flex;
+    justify-content: center !important;
+
+    align-items: center;
+}
+.button{
+    font-size: 14px !important;
+    font-family: var(--raleway) !important;
+}
+
+.foot{
+    grid-area: foot;
+    background: rgba(43, 43, 43, 0.801);
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+.foot > a{
+    padding: 0 2rem;
+    font-size: 10px;
+}
+.foot a:nth-child(2){
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+a:hover{
+    text-decoration: underline;
+}
+

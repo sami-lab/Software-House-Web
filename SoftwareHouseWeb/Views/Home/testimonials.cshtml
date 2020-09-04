@@ -1,0 +1,65 @@
+﻿@model IEnumerable<SoftwareHouseWeb.ViewModel.ReviewViewModel.ReviewViewModel>
+@using System.Globalization;
+@{
+    ViewData["Title"] = "Testimonials";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="head">
+    <h2>WEB REVIEWS</h2>
+</div>
+<div class="para">
+    <div class="para1">
+        <h2>Learn how our Million+ Clients got <br />satisfaction follow in their footsteps</h2>
+        <p class="one">Following are some of many testimonials that we receive everyday form our valued clients. All our clients are extremely satisfied with the creativity of our team and professional design services. We have been giving our clients the services we promised, which makes our clients come back for more for their design needs. We truly appreciate and thank our clientele for patronizing us.</p>
+        <p class="two">
+            Logo Design Pros is a leader in custom branding, creative designing and professional development solutions, and has served over a million customers, across the globe. Logo Design Pros reviews are testament to the commitment and dedication of our team.
+        </p>
+    </div>
+
+    <div class="nara">
+        <img src="~/Image/Dev/testimonials/ft.jpg" asp-append-version="true">
+    </div>
+</div>
+
+<!-- reviews -->
+<div class="reviews">
+    <div class="main">
+        @foreach (var review in Model)
+        {
+            var PhotoPath = "~/Image/User/" + (review.UserPhoto ?? "emp.png");
+            DateTime date = DateTime.ParseExact(review.created_At.ToString(), "dd/MM/yyyy hh:mm tt", CultureInfo.InvariantCulture);
+            <div class="row">
+                <div class="col-1 col">
+                    <div class="image">
+                        <img src="@PhotoPath" asp-append-version="true" alt="">
+                    </div>
+                    <div class="name"><h2>@review.UserName</h2></div>
+                    <div class="review-stars d-flex">
+                        <!-- for loop star -->
+                        @for (int i = 1; i <= review.Rating; i++)
+                        {
+                            <img src="~/Image/Dev/Orange_star.svg" alt="">
+                        }
+
+                    </div>
+                    <p>
+                        @review.Desc
+                    </p>
+
+                    <p class="card-text">
+                        <small class="text-muted">Added at @date</small>
+                    </p>
+                </div>
+                <div class="col-2 col"></div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@section Scripts
+    {
+
+    <link href="~/wwwroot/css/testimonial.css" rel="stylesheet" />
+}

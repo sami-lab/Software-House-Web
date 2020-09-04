@@ -1,0 +1,354 @@
+
+
+
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+body{
+    overflow-x: hidden;
+
+}
+html{
+    font-size: 62.5%;
+    font-family: var(--font-primary);
+
+    
+}
+body{
+    width: 100vw;
+    height: 100vh;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* container */
+.container1{
+    min-height: 25vw;
+    width: 100%;
+    height: 55vw;
+    background:linear-gradient(rgba(0,0,0,0.7),rgba(9, 101, 161, 0.8)) ,url("../img/container3.jpg");
+    background-size: 100% 100% , cover;
+    /* background-position-x: -10rem; */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: grid;
+    grid-template-columns: 50fr 40fr 10fr;
+    grid-template-rows: 5fr 90fr 5fr;
+    grid-template-areas: ". . ."
+                        "textcontent formsect ."
+                        ". . .";
+                        color: white;
+
+}
+
+.text-content{
+    /* background: linear-gradient(rgba(221, 193, 67, 0.178),rgb(206, 138, 0,0)); */
+grid-area: textcontent;
+display: flex;
+justify-content: center;
+
+ align-items: flex-start;
+flex-flow: column;
+margin-left: 20%;
+font-family: var(--raleway)
+}
+.text-content h1{
+    font-size: 3.5rem;
+}
+.text-content h2{
+    font-size: 2rem;
+}
+
+.text-content p{
+    font-size: 2rem;
+}
+.text-content ul{
+    /* margin-top: 4rem; */
+    font-size: 1.6rem;
+    margin-left: 15%;
+}
+.text-content ul li{
+    list-style: none;
+}
+.text-content ul li::before{
+    content:'';
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    background: url('../img/tick.svg');
+    background-repeat: no-repeat;
+    transform: translate(-3rem,0.3rem);
+    
+}
+.text-content > * {
+    padding: 1rem 0;
+}
+.form{
+    grid-area: formsect;
+    font-family: var(--font-head);
+   border: 1px solid white;
+   padding: 0rem 0rem 0rem 5rem;
+ background: white;
+ display: flex;
+ flex-flow: column;
+ justify-content: center;
+ 
+ border-radius: 2rem;
+
+}
+.form h1{
+    font-size: 2rem;
+    font-family:var(--font-primary)
+}
+.form h1:nth-child(2){
+    color: red !important;
+    animation: discount 1s linear  infinite normal forwards;
+}
+@keyframes discount{
+    0%{
+        color: red
+    }
+    50%{
+        color: rgb(196, 47, 47)
+    }
+    75%{
+color: rgb(236, 131, 45);
+    }
+    100%{
+        color: red;
+    }
+}
+.form input , .form textarea {
+    width: 84% !important;
+}
+select {
+    width: 90% !important;
+    cursor: pointer;
+    font-family: var(--raleway);
+}
+select:focus{
+    outline: rgba(9, 101, 161, 0.8) !important;
+
+}
+.form h1{
+    color: black;
+}
+
+.form *{
+    font-size: 1.6rem
+}
+
+
+.button{
+font-size: 1.6rem !important; 
+justify-self: center;
+align-self: flex-start;
+
+}
+
+#msg-area{
+    resize: none;
+}
+/* about-us */
+#about-us{
+    display: grid;
+    grid-template-rows:  min-content;
+    font-family: var(--raleway);
+    margin: 6rem;
+    text-align: center;
+    align-items: center;
+    color: rgb(23, 54, 63);
+
+}
+#about-us h1{
+font-size: 4rem;
+margin-bottom: 10px;
+}
+#about-us p{
+    font-size: 1.6rem;
+    line-height: 30px;
+}
+/* offers */
+.offers{
+    display: flex;
+    /* grid-template-columns: repeat(auto-fit,35rem); */
+    /* grid-template-columns: auto; */
+    justify-content: center;
+  
+    margin-top: 5rem;
+    position: relative;
+}
+.offers img{
+    height: 80rem;
+    width: 35rem;
+    padding: 3rem;
+}
+.order-btn1{
+    
+    padding: 1rem 11rem;
+    background: rgb(168, 26, 26);
+    left: 13%;
+    top: 81%;
+    color: white;
+    
+    position: absolute;
+    cursor: pointer;
+}
+.order-btn2{
+    
+    padding: 1rem 11rem;
+    background: rgb(168, 26, 26);
+    /* left: %; */
+    top: 81%;
+    color: white;
+    
+    position: absolute;
+    cursor: pointer;
+}
+.order-btn3{
+    padding: 1rem 11rem;
+    background: rgb(168, 26, 26);
+    left: 68%;
+    top: 81%;
+    color: white;
+    
+    position: absolute;
+    cursor: pointer;
+}
+
+.recent-work{
+    margin-top: 5rem;
+    display: grid;
+    grid-template-rows: 10rem minmax(25rem,1fr) 10rem;
+    grid-template-columns: minmax(5rem,1fr) minmax(22rem,110rem) minmax(5rem,1fr);
+    grid-template-areas: ". h ."
+                            ". works ."
+                            ". twobtn ."
+}
+.recent-work h1:nth-child(1){
+grid-area: h;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 3rem;
+}
+.works{
+    grid-area: works;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,25rem);
+
+    grid-gap: 3rem;
+    justify-content: center;
+}
+.same{
+    width: 25rem;
+    height: 25rem;
+   position: relative;
+
+}
+.works div{
+    overflow: hidden;
+}
+.same  img{
+    width: 25rem;
+    height: 100%;
+    transition: all 500ms ease;
+
+}
+
+.same:hover img {
+transform: scale(1.2);
+cursor: pointer;
+
+}
+
+button {
+    background-color: var(--green) !important;
+    transition: background 300ms ease;
+}
+.two-btn{
+    grid-area: twobtn;
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+.two-btn button{
+    font-family: var(--raleway) !important;
+    /* width: 20rem !important; */
+    padding: 1rem 3rem;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+.two-btn button:focus{
+    outline: none;
+}
+ button:hover{
+    background: var(--dark-green) !important;
+}
+
+
+
+@media only screen and (max-width:806px){
+.container1{
+    grid-row-gap: 20px;
+    height: auto;
+    grid-template-columns: 20fr 60fr 20fr;
+    grid-template-rows: 5fr 20fr 40fr 5fr;
+    grid-template-areas: ". . ."
+                        ". textcontent ."
+                        ". formsect .";
+                        color: white;
+}
+  }
+  @media only screen and (max-width:768px){
+    .container1{
+        padding-top: 15rem;
+    }
+  }
+  @media only screen and (max-width:425px){
+  .text-content{
+      margin: 0;
+      align-items: center;
+  }
+    .text-content h1{
+        font-size: 3.5rem;
+        text-align: center;
+    }
+    .text-content h2{
+        font-size: 2rem;
+
+
+    }
+    
+    .text-content p{
+        font-size: 2rem;
+        text-align: center;
+    }
+ 
+    .text-content ul li{
+       font-size: 12px;
+    }
+    .text-content ul li::before{
+  
+        width:12px;
+        height: 12px;
+     
+        
+    }
+
+  
+.container1{
+    grid-template-columns: 5fr 90fr 5fr;
+    background-attachment: scroll;
+}
+
+    
+  }
+  

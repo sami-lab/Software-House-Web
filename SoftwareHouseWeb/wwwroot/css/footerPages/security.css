@@ -1,0 +1,401 @@
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+body{
+    overflow-x: hidden;
+
+}
+html{
+    font-size: 62.5%;
+    font-family: var(--font-primary);
+
+    
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+:root{
+    --font-stylish:'Pacifico', cursive;
+    --font-primary:'Farro', sans-serif;
+    --font-head:'Montserrat', sans-serif;
+    --raleway:'Raleway', sans-serif;
+}
+.flex
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container
+{
+    display: grid;
+    grid-template-rows: 10vh 16vh minmax(11vh,110vh) min-content minmax(50vh,min-content) 10vh;
+    grid-template-columns: minmax(5rem ,1fr) minmax(min-content,118rem) minmax(5rem, 1fr);
+    grid-template-areas: 
+                        "Portfolio Portfolio Portfolio" 
+                        "Portfolio  Portfolio Portfolio " 
+                        ". details ." 
+                        ". description ."
+                        ". . ."
+                         "features features features";
+/* margin-bottom: 5rem; */
+}
+/* top section */
+.top
+{
+    display: grid;
+    grid-area: top;
+    background: rgb(128, 212, 245);
+    font-size: 1.2rem;
+    font-family: 'Arial, Helvetica, sans-serif';
+    grid-template-columns: 55fr repeat(4,10fr) 5fr;
+    grid-template-areas: " . request chat call account .";
+}
+.request
+{
+    grid-area: request;
+    cursor: pointer;
+}
+.chat
+{
+    grid-area: chat;
+    cursor: pointer;
+}
+.call
+{
+    grid-area: call;
+    cursor: pointer;
+}
+.account
+{
+    grid-area: account;
+    cursor: pointer;
+}
+/* nav section */
+.nav
+{
+    grid-area: nav;
+    background: rgb(44, 190, 238);
+    font-size: 2rem;
+    font-family: 'Arial, Helvetica, sans-serif';
+}
+/* Portfolio Section */
+.Portfolio
+{
+    grid-area: Portfolio;
+    background: rgb(26, 99, 77);
+    display: grid;
+    font-family: var(--raleway);
+    grid-template-columns: 10fr 40fr 50fr;
+    grid-template-areas: ". headPortfolio .";
+
+}
+.headPortfolio
+{
+    grid-area: headPortfolio;
+    -webkit-text-fill-color: white;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+
+/* details */
+
+.details
+{
+    grid-area: details;
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    grid-template-rows: 5fr 95fr;
+    /* grid-template-columns: 70fr 30fr ; */
+    grid-template-areas: "heading"
+                        " list";
+    /* background: darkblue */
+}
+.heading
+{
+    grid-area: heading;
+    margin: 2rem 0;
+    font-weight: 500;
+    /* background: rebeccapurple */
+}
+.list
+{
+    grid-area: list;
+    display: grid;
+    grid-template-rows: 5vh min-content;
+    grid-template-areas: "head"
+                        "listitems";
+    /* grid-template-columns: repeat(17,minmax(min-content,1fr)); */
+    margin: 2rem 0;
+    font-weight: 500;
+}
+.head
+{
+    grid-area: head;
+}
+.listitems
+{
+    grid-area: listitems;
+    
+}
+ .listitems a
+
+{
+    color: rgba(43, 78, 150, 0.849);
+    text-decoration: none;
+    display: block;
+    margin:1.6rem 0;
+    font-weight: bold;
+    font-size: 1.7rem;
+    /* align-items: flex-start */
+}
+
+.listitems a:hover
+{
+   color: rgb(14, 37, 112);
+   transition: all 4ms ease-in-out 1ms;
+   /* transition:  */
+}
+.listitems a span
+{
+color: rgb(255, 76, 11);
+}
+/* description */
+.description
+{
+    grid-area: description;
+    display: grid;
+    grid-template-rows: repeat(17,min-content);
+    grid-template-areas: "about"
+                        "info"
+                        "data"
+                        "friend"
+                         "news"
+                         "media"
+                         "sharing"
+                         "security"
+                         "accounts"
+                         "update"
+                         "cookies"
+                         "gift"
+                         "test"
+                         "links"
+                         "privacy"
+                         "legal"
+                         "questions";
+
+/* background: orangered */
+}
+
+.about
+{
+    grid-area:about;
+    /* background: orangered; */
+}
+.info
+{
+    grid-area:info;
+}
+.data
+{
+    grid-area:data;
+}
+.friend
+{
+    grid-area:friend;
+}
+.news
+{
+    grid-area:news;
+}
+.media
+{
+    grid-area:media;
+}
+.sharing
+{
+    grid-area:sharing;
+}
+.security
+{
+    grid-area:security;
+}
+.accounts
+{
+    grid-area:accounts;
+}
+.update
+{
+    grid-area:update;
+}
+.cookies
+{
+    grid-area:cookies;
+}
+.gift
+{
+    grid-area:gift;
+}
+.test
+{
+    grid-area:test;
+}
+.links
+{
+    grid-area:links;
+}
+.privacy
+{
+    grid-area:privacy;
+}
+
+.legal
+{
+    grid-area:legal;
+}
+.questions
+{
+    grid-area:questions;
+}
+
+.description h3
+{
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-size: 2.8rem;
+    font-weight: normal
+}
+.description p
+{
+    /* font-family: Arial, Helvetica, sans-serif; */
+    margin: 1.45rem 0;
+    font-size: 1.45rem;
+    line-height: 2.2rem;
+    font-weight: normal;
+}
+.description p a
+
+{
+    color: rgba(43, 78, 150, 0.849);
+    text-decoration: none;
+    /* display: block; */
+    margin:1.6rem 0;
+    font-weight: bold;
+   
+}
+
+.description p a:hover
+{
+   color: rgb(14, 37, 112);
+   transition: all 4ms ease-in-out 1ms;
+   /* transition:  */
+}
+/* . */
+
+
+.pics
+{
+    grid-area: pics;
+    display: grid;
+    /* grid-gap: 2rem; */
+    grid-template-columns:10fr  repeat(4,20fr) 10fr;
+    grid-template-areas: " .  pic1 pic2 pic3 pic4 .";
+
+}
+.pic1
+{
+grid-area: pic1;
+/* background: yellow */
+
+}
+.pic1  img
+{
+    width: 8rem;
+    grid-row: 1/span 2;
+    /* background: white */
+}
+.pic1 .detail1 
+{
+    padding-left: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    color: white
+}
+.pic2
+{
+grid-area: pic2;
+/* background: violet */
+}
+.pic2 img
+{
+    width: 8rem;
+    grid-row: 1/span 2;
+}
+.pic2 .detail2 
+{
+    padding-left: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    color: white
+}
+.pic3
+{
+grid-area: pic3;
+/* background: turquoise */
+}
+.pic3 img
+{
+    width: 8rem;
+    grid-row: 1/span 2;
+}
+ .pic3 .detail3  
+{
+    padding-left: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    color: white
+}
+.pic4
+{
+grid-area: pic4;
+/* background: rebeccapurple */
+}
+.pic4  img
+{
+    width: 8rem;
+    grid-row: 1/span 2;
+    /* background: white */
+}
+.pic4 .detail4 
+{
+    padding-left: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    color: white
+}
+
+/* features */
+.features
+{
+    grid-area: features;
+    display: grid;
+    grid-template-columns: 30fr 70fr;
+    grid-template-areas: "morefeture image";
+}
+.morefeture
+{
+    grid-area: morefeture;
+    background: red;
+    color: white;
+    font-size: 1.8rem;
+    /* top: calc(100%-25px) */
+}
+.image
+{
+    grid-area: image;
+    background: rgb(5, 5, 24)
+}

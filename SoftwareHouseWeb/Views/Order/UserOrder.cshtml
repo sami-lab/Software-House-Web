@@ -1,0 +1,87 @@
+﻿@model IEnumerable<SoftwareHouseWeb.ViewModel.OrderViewModel.OrderViewModel>
+
+@{
+    ViewData["Title"] = "UserOrder";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<div class="main">
+    <div class="bread-crumb">
+        <a asp-controller="Account" asp-action="Profile">@User.Identity.Name Account </a> >> Pending Orders
+    </div>
+    <div class="headings">
+        <h1>User's Orders</h1>
+    </div>
+    <div class="table">
+        <div class="head">
+            <h1>Order ID</h1>
+            <h1>Name</h1>
+            <h1>Order Date</h1>
+            <h1>Amount</h1>
+            <h1>Order Status</h1>
+            <h1>Payment Method</h1>
+            <h1>Actions</h1>
+        </div>
+        <div class="td-rows">
+            @foreach (var order in Model)
+            {
+                <div class="row">
+                    <p>
+                        Order @order.order_id
+                    </p>
+                    <p>
+                        @{
+                            string pacakges = "";
+                        }
+                        @foreach (var p in order.OrderPackages)
+                        {
+                            pacakges = p.Quantity + " " + p.PkgName + "\n";
+                        }
+                        @pacakges
+                    </p>
+                    <p>
+                        @order.Date
+                    </p>
+                    <p>
+                        $@order.TotalAmount
+                    </p>
+                    <p>
+                        @order.OrderStatus
+                    </p>
+                    <p>
+                        @order.PaymentMethod
+                    </p>
+                    @if (order.PaymentStatus == SoftwareHouseWeb.Data.Models.Orders.PaymentStatus.Unpaid)
+                    {
+                        <a asp-controller="Order" asp-action="ChargeAmount" asp-route-order_id="@order.order_id">Pay Now</a>
+                    }
+                    @if (order.OrderStatus == SoftwareHouseWeb.Data.Models.Orders.OrderStatus.Pending)
+                    {
+
+                        <form method="post" class="form-inline" asp-action="CancelOrder" asp-route-order_id="@order.order_id">
+
+                            <a asp-controller="Order" asp-action="Edit" asp-route-id="@order.order_id">Edit</a>
+                            <span id="confirmDeleteSpan_@order.order_id" style="display:none">
+                                <span><b>Are you sure you want to delete?</b></span>
+                                <button type="submit" class="btn btn-danger">Yes</button>
+                                <a href="#/" class="btn btn-primary"
+                                   onclick="confirmDelete('@order.order_id', false)">No</a>
+                            </span>
+
+                            <span id="deleteSpan_@order.order_id">
+                                <a href="#/" class="btn btn-danger"
+                                   onclick="confirmDelete('@order.order_id', true)">Delete</a>
+                            </span>
+                        </form>
+                    }
+                    <a asp-controller="Order" asp-action="Detail" asp-route-id="@order.order_id">Details</a>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/CustomScript.js"></script>
+    <link rel="stylesheet" href="~/css/unpaid.css">
+}

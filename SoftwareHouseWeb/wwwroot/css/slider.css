@@ -1,0 +1,145 @@
+.slider{
+    /* margin-top: 2rem; */
+    height: 20rem;
+    background: var(--primary-blue);
+    display: grid;
+    grid-template-columns: 25fr 75fr ;
+    grid-template-areas: "million mainer ";
+    grid-column-gap: 2rem;
+color: white;
+                        
+}
+.million{
+    z-index: 12;
+    grid-area: million;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-end;
+    color: white;
+    font-family: var(--font-head);
+    font-size: 1.2rem;
+    background: var(--primary-blue);
+    
+}
+.million > *{
+    transform: translateX(-1rem);
+}
+.million h1:nth-child(2){
+    color: rgb(143, 8, 8);
+}
+#order-btn{
+    margin-top: 2.8rem;
+    padding: 2rem 4rem;
+    /* border: 1px solid white; */
+    transition: 300ms ease-in-out;
+    background: var(--green);
+}
+#order-btn:hover{
+    cursor: pointer;
+    background: var(--dark-green)
+
+}
+.mainer{
+    grid-area: mainer;
+    z-index: 1;
+    
+}
+.slider-setting{
+    display: grid;
+    text-align: center;
+	/* grid-row-gap: 1rem; */
+grid-template-rows: 1fr;
+    grid-template-columns: repeat(auto-fit,20rem);
+justify-content: center;
+/* align-content: center; */
+/* transform: translateX(-20rem); */
+z-index: 1;
+
+}
+
+
+.slider-setting > * img{
+    height: 7rem;
+    margin-top: 10%;
+}
+.slider-setting > * h2{
+margin-top: 2rem;
+}
+@media only screen and (max-width:870px){
+    .slider-setting{
+    grid-template-columns: repeat(auto-fit,17rem);
+        
+    }
+
+}
+@media only screen and (max-width:700px){
+    .slider-setting{
+    grid-template-columns: repeat(auto-fit,15rem);
+        
+    }
+    
+}
+@media only screen and (max-width:615px){
+    .slider-setting{
+    grid-template-columns: repeat(auto-fit,13rem);
+        
+    }
+    
+}
+@media only screen and (max-width:535px){
+    .slider-setting{
+    grid-template-columns: repeat(auto-fit,12rem);
+       
+    }
+    .slider-setting img{
+        margin-top: 20%;
+    }
+    
+}
+@media only screen and (max-width:493px){
+    .slider-setting{
+    grid-template-columns: repeat(auto-fit,11rem);
+        
+    }
+    
+}
+@media only screen and (max-width:452px){
+    .slider-setting{
+    grid-template-columns: repeat(auto-fit,10rem);
+        
+    }
+    .million{
+        font-size: 70%;
+    }
+    #order-btn{
+        padding: 1.5rem 3.5rem;
+    }
+}
+@media only screen and (max-width:415px){
+    .slider-setting{
+    grid-template-columns: repeat(auto-fit,9rem);
+        
+    }
+    
+}
+@media only screen and (max-width:373px){
+    .slider-setting{
+    grid-template-columns: repeat(auto-fit,8rem);
+        font-size: 50%;
+    }
+    .slider-setting > *{
+        height: 5rem;
+    }
+  
+    #order-btn{
+        padding: 1.5rem 3rem;
+    }
+    
+}
+@media only screen and (max-width:375px){
+    .slider{
+        display: none;
+    }
+    
+}

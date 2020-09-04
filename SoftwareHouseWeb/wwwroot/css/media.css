@@ -1,0 +1,22 @@
+
+  /* media queries */
+  @media only screen and (max-width:1356px){
+    html{
+        font-size: 50%;
+    }
+  }
+  @media only screen and (max-width:1080px){
+    html{
+        font-size: 40%;
+    }
+  }
+  
+  
+  @media only screen and (max-width:786px){
+    html{
+        font-size: 35%;
+    }
+  }
+
+  
+  

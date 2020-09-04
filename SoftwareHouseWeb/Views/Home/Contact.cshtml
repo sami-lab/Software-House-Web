@@ -1,0 +1,64 @@
+﻿@model SoftwareHouseWeb.ViewModel.Home.CustomQuoteViewModel
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<div class="container">
+
+    <!-- portfolio -->
+    <div class="Portfolio flex">
+        <div class="headPortfolio">Contact Us</div>
+    </div>
+
+    <!-- details -->
+    <div class="details">
+        <h1>Get in touch with us!</h1>
+        <p>We have your back. We are available 365x24x7 so leave us a line if you have any query or If you wish to discuss a project.</p>
+        <p>We will get back to you as soon as possible.</p>
+    </div>
+
+    <!-- form -->
+    <form method="post" asp-controller="Home" asp-action="CustomQuote" class="form">
+
+        <div class="input1">
+            <input asp-for="Name" placeholder="Name">
+        </div>
+        <div class="input2">
+            <input asp-for="Email" placeholder="Email">
+        </div>
+        <div class="input3">
+            <input asp-for="PhoneNumber" placeholder="Phone">
+        </div>
+        <div class="input4">
+            <input asp-for="Country" class="Input4" placeholder="Phone Number">
+        </div>
+        <div>
+            <textarea asp-for="Message"  placeholder="Message"> </textarea>
+        </div>
+
+
+        <div class="button flex">
+            <a asp-controller="Order" asp-action="Create"> <h1>Submit now</h1></a>
+        </div>
+
+    </form>
+
+    <!-- Contact -->
+
+
+
+
+    <div class="features">
+        <div class="morefeture flex">
+            <h2>More Features</h2>
+        </div>
+        <div class="image ">
+            <img src="~/Image/Dev/more-feature-points.png" alt="">
+        </div>
+    </div>
+
+</div>
+
+@section Scripts{ 
+<link href="~/css/footerPages/contact.css" rel="stylesheet" />
+}

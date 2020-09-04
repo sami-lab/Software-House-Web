@@ -1,0 +1,42 @@
+﻿@model SoftwareHouseWeb.ViewModel.Account.LoginViewModel
+
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    ViewData["Title"] = "Login";
+}
+
+<div class="heading">
+    <h1>LOGIN</h1>
+    <div class="line"></div>
+</div>
+<form method="post" asp-action="Login">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <label for="Email">Email</label>
+    <input asp-for="Email" placeholder="Enter Email" required>
+    <span asp-validation-for="Email" class="text-danger"></span>
+    <label for="Password">Password</label>
+    <input asp-for="Password" required>
+    <span asp-validation-for="Password" class="text-danger"></span>
+    <label for="">
+        Forgot your password?
+        <a asp-controller="Account" asp-action="ForgotPassword" style="color: rgb(6, 141, 107);">Click Here</a>
+    </label>
+    <label for="">
+        Remember me?
+        <input asp-for="RememberMe">
+    </label>
+    <button type="submit">SUBMIT</button>
+    <label for="">
+        Create a new account
+        <a asp-controller="Account" asp-action="Register" style="color: rgb(6, 141, 107);">Sign Up</a>
+    </label>
+</form>
+@section Scripts{
+    <style>
+        .sticky-navbar {
+            display: grid;
+            position: relative;
+        }
+    </style>
+    <link rel="stylesheet" href="~/css/login.css">
+}

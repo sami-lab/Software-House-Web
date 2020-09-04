@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SoftwareHouseWeb.ViewModel.Portfolio.PortfolioViewModel>
+@using System.Globalization;
+@using SoftwareHouseWeb.ViewModel.Portfolio
+@{
+    ViewData["Title"] = "Service Portfolio";
+}
+
+<div class="container-fluid">
+    @if (Model.Any())
+    {
+       <div class="row">
+        <div class="col-12 m-b-30">
+            <div class="row">
+                @foreach (var portfolio in Model)
+                {
+                    var PhotoPath = "~/Image/Portfolio/" + (portfolio.PhotoPath ?? "download.png");
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card">
+                            <img class="img-fluid" asp-append-version="true" src="@PhotoPath" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">@portfolio.Heading</h5>
+
+                                <p class="card-text">
+                                    @if (portfolio.Desc != null)
+                                    {
+                                        <small class="text-muted">@portfolio.Desc</small>
+                                    }
+                                    <small class="text-muted">@portfolio.created_At</small>
+                                </p>
+                                @await Html.PartialAsync("~/Views/Shared/Modal.cshtml", portfolio.id)
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    }
+    else
+    {
+        <h2>No Portfolio Added Yet</h2>
+    }
+    <div class="row">
+        <div class="col-2">
+            <div class="card">
+                <div class="card-body">
+                    @await Html.PartialAsync("~/Views/Portfolio/CreatePortfolio.cshtml",new PortfolioViewModel() { Ser_Id= ViewBag.Ser_id })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

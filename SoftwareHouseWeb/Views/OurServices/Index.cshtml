@@ -1,0 +1,43 @@
+﻿@model IEnumerable<SoftwareHouseWeb.ViewModel.ServicesViewModel.ServicesViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IconPath)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    var photo = "~/Image/Services/" + item.IconPath;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceName)
+            </td>
+            <td>
+
+                <img src="@photo" width="25" height="25" asp-append-version="true"/>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @await Html.PartialAsync("~/Views/Shared/Modal.cshtml", item.id)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

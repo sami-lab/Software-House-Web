@@ -1,0 +1,741 @@
+﻿@model SoftwareHouseWeb.ViewModel.Home.CombineData
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Webdevelopment</title>
+    <!-- css -->
+    <link rel="stylesheet" href="~/css/nav.css" />
+    <link rel="stylesheet" href="~/css/slider.css" />
+    <link rel="stylesheet" href="~/css/footer.css" />
+    <link rel="stylesheet" href="~/css/packages.css" />
+    <link rel="stylesheet" href="~/css/cart.css" />
+    <link rel="stylesheet" href="~/css/livechat.css" />
+    <link rel="stylesheet" href="~/css/sticky-navbar.css" />
+    <link rel="stylesheet" href="~/css/testimonials.css">
+    <link rel="stylesheet" href="~/css/webdev.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/media.css">
+
+
+    <!-- form -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/form.min.css">
+
+    <!-- loader -->
+    <style>
+        /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+        .wrapper{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000000;
+  background: radial-gradient(rgb(233, 229, 229),rgb(0, 174, 255));
+}
+
+  .loader  {
+    animation: rotate 1s infinite;
+    height: 50px;
+    width: 50px;
+  }
+
+  .loader:before,
+  .loader:after {
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 20px;
+    width: 20px;
+  }
+  .loader:before {
+    animation: ball1 1s infinite;
+    background-color: #cb2025;
+    box-shadow: 30px 0 0 #f8b334;
+    margin-bottom: 10px;
+  }
+  .loader:after {
+    animation: ball2 1s infinite;
+    background-color: #00a096;
+    box-shadow: 30px 0 0 #97bf0d;
+  }
+
+  @@keyframes rotate {
+    0% {
+      -webkit-transform: rotate(0deg) scale(0.8);
+      -moz-transform: rotate(0deg) scale(0.8);
+    }
+    50% {
+      -webkit-transform: rotate(360deg) scale(1.2);
+      -moz-transform: rotate(360deg) scale(1.2);
+    }
+    100% {
+      -webkit-transform: rotate(720deg) scale(0.8);
+      -moz-transform: rotate(720deg) scale(0.8);
+    }
+  }
+
+  @@keyframes ball1 {
+    0% {
+      box-shadow: 30px 0 0 #f8b334;
+    }
+    50% {
+      box-shadow: 0 0 0 #f8b334;
+      margin-bottom: 0;
+      -webkit-transform: translate(15px,15px);
+      -moz-transform: translate(15px, 15px);
+    }
+    100% {
+      box-shadow: 30px 0 0 #f8b334;
+      margin-bottom: 10px;
+    }
+  }
+
+  @@keyframes ball2 {
+    0% {
+      box-shadow: 30px 0 0 #97bf0d;
+    }
+    50% {
+      box-shadow: 0 0 0 #97bf0d;
+      margin-top: -20px;
+      -webkit-transform: translate(15px,15px);
+      -moz-transform: translate(15px, 15px);
+    }
+    100% {
+      box-shadow: 30px 0 0 #97bf0d;
+      margin-top: 0;
+    }
+  }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="loader"></div>
+    </div>
+    <!-- sign-in -->
+    <!-- mobile-nav -->
+    <div class="mobile-nav">
+        <div class="ham">
+            <img src="~/Image/Dev/menu.svg" alt="">
+        </div>
+        <div class="mobile-links">
+            <a id="custom-quote" asp-controller="Home" asp-action="CustomQuote">Request custom quote</a>
+            <a>Call Toll free 123456789</a>
+            <a id="livechat">Live Chat</a>
+            @*<a id="acnt" href="profile.html"> My Account</a>*@
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a id="acnt" asp-controller="Account" asp-action="Profile"> My Account</a>
+            }
+            else
+            {
+                <a id="acnt" asp-controller="Account" asp-action="Register"> Signup</a>
+            }
+        </div>
+        <div class="logo">
+            <h1>Web Development</h1>
+        </div>
+        <div class="sign">
+            <img id="avatar" src="~/Image/Dev/man.svg" alt="" />
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a asp-controller="Account" asp-action="Logout"><h2>Logout</h2></a>
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="Login"><h2>Login / SignUp</h2></a>
+            }
+        </div>
+    </div>
+
+    <div class="mobile-menu">
+        <div class="cross">
+            <img src="~/Image/Dev/cross.svg" alt="">
+        </div>
+        <div class="menu">
+            <ul id="menu">
+                <li> <a asp-controller="Home" asp-action="testimonials"> <h1>Testimonials</h1></a></li>
+                <li><a asp-controller="Home" asp-action="WhyUs"> <h1>Why Us</h1></a></li>
+                <li><a asp-controller="Home" asp-action="OurGurantee"><h1>Our Guarantee</h1></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- chatbox -->
+    <div class="chat-box">
+        <div id="chat-btn_6">
+            <H2>LIVE CHAT</H2>
+        </div>
+        <div class="messagebox"></div>
+    </div>
+    <!-- cart -->
+    <nav>
+        <div class="logo">
+            <h2>Web Development</h2>
+        </div>
+        <div class="links">
+            <a id="custom-quote">Request custom quote</a>
+            <a>Call Toll free 123456789</a>
+            @*<a id="livechat">Live Chat</a>*@
+            <a id="btn-chat_8">Live Chat</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a id="acnt" asp-controller="Account" asp-action="Profile"> My Account</a>
+            }
+            else
+            {
+                <a id="acnt" asp-controller="Account" asp-action="Register"> Signup</a>
+            }
+        </div>
+        <div class="nav-items">
+            <h3 id="logo">Logo Design</h3>
+            <h3 id="webdesign">Website Design </h3>
+            <h3 id="webdev">Website Development</h3>
+            <a asp-controller="Home" asp-action="testimonials"> <h3>Testimonials</h3></a>
+
+            <a asp-controller="Home" asp-action="WhyUs"> <h3>Why Us</h3></a>
+            <a asp-controller="Home" asp-action="OurGurantee"><h3>Our Guarantee</h3></a>
+        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="three-btn">
+                <img id="avatar" src="~/Image/Dev/man.svg" alt="" />
+                <a asp-controller="Account" asp-action="Profile"><h2>Profile</h2></a>
+
+            </div>
+        }
+        else
+        {
+            <div class="three-btn">
+                <img id="avatar" src="~/Image/Dev/man.svg" alt="" />
+                <a asp-controller="Account" asp-action="Login"><h2>Login / SignUp</h2></a>
+
+            </div>
+        }
+    </nav>
+    <div class="nav-item-expand">
+        <div class="portfolio">
+            <!--  -->
+            <img src="~/Image/Dev/portfolio-icon.png" asp-append-version="true" alt="">
+            <a asp-controller="Portfolio" asp-action="Index"><h2>Portfolio</h2></a>
+        </div>
+        <div class="our-packages">
+            <img src="~/Image/Dev/package-icon.png" asp-append-version="true" alt="">
+            <a asp-controller="Packages" asp-action="Index"> <h2>Our Packages</h2></a>
+        </div>
+        <div class="how-it-works">
+            <img src="~/Image/Dev/setting-icon.png" asp-append-version="true" alt="">
+            <a asp-controller="Home" asp-action="HowItWork"> <h2>How It Works</h2></a>
+        </div>
+
+    </div>
+    <!-- sticky navbar -->
+    <div class="sticky-navbar">
+        <div>
+            <h2>Web Development</h2>
+        </div>
+        <div class="sticky-items">
+            <h3 id="logo2">Logo Design</h3>
+            <h3 id="webdesign2">Website Design </h3>
+            <h3 id="webdev2">Website Development</h3>
+        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="sticky-three-btn">
+                <img id="sticky-avatar" src="~/Image/Dev/man.svg" alt="" />
+                <a asp-controller="Account" asp-action="Profile"><h2>Profile</h2></a>
+
+            </div>
+        }
+        else
+        {
+            <div class="sticky-three-btn">
+                <img id="sticky-avatar" src="~/Image/Dev/man.svg" alt="" />
+                <a asp-controller="Account" asp-action="Login"><h2>Login / SignUp</h2></a>
+
+            </div>
+        }
+    </div>
+    <div class="nav-item-expand-sticky">
+        <div class="portfolio">
+            <!--  -->
+            <img src="~/Image/Dev/portfolio-icon.png" asp-append-version="true" alt="">
+            <a asp-controller="Portfolio" asp-action="Index"><h2>Portfolio</h2></a>
+        </div>
+        <div class="our-packages">
+            <img src="~/Image/Dev/package-icon.png" asp-append-version="true" alt="">
+            <a asp-controller="Packages" asp-action="Index"> <h2>Our Packages</h2></a>
+        </div>
+        <div class="how-it-works">
+            <img src="~/Image/Dev/setting-icon.png" asp-append-version="true" alt="">
+            <a asp-controller="Home" asp-action="HowItWork"> <h2>How It Works</h2></a>
+        </div>
+
+    </div>
+
+
+
+    <!-- sticky navbar -->
+    <!-- maincontainer -->
+    <header>
+        <div class="text-content">
+            <h2 style="color:rgb(227, 238, 77);">
+                More Than 1Million Clients have
+            </h2>
+            <h1>
+                CHOSEN US GLOBALLY!<br>
+                YOU SHOULD TOO.
+            </h1>
+
+            <p>Your logo is your company’s signature and the identity of your brand</p>
+            <p>
+                Best Custom Logo & Web Company
+            </p>
+            <ul>
+                <li>More then 12 years Experience</li>
+                <li>Clients across 45 Countries</li>
+                <li>100% Money Back Guarantee</li>
+                <li>Industry specific designers</li>
+            </ul>
+        </div>
+    </header>
+    <div class="slider">
+        <div class="million">
+            <h1>MILLION+ CLIENTS</h1>
+            <h1>14000000+</h1>
+            <h1>Logo & Web Projects</h1>
+            <a asp-controller="Order" asp-action="Create" asp-route-Ser_Id="@Model.Services.id"><h2 id="order-btn">ORDER NOW</h2></a>
+        </div>
+        <div class="mainer">
+            <div class="guarantee-etc slider-setting">
+                <div class="item-1">
+                    <img src="~/Image/Dev/guarantee.svg" asp-append-version="true" alt="" />
+                    <h2>100% Money back Guarantee</h2>
+                </div>
+                <div class="item-2">
+                    <img src="~/Image/Dev/satisfied.svg" asp-append-version="true" alt="" />
+                    <h2>100% Satisfaction</h2>
+                </div>
+                <div class="item-3">
+                    <img src="~/Image/Dev/support.svg" asp-append-version="true" alt="" />
+                    <h2>24/7 Customer Support</h2>
+                </div>
+                <div class="item-4">
+                    <img src="~/Image/Dev/revisions.svg" asp-append-version="true" alt="" />
+                    <h2>Unlimited Revisions</h2>
+                </div>
+                <div class="item-5">
+                    <img src="~/Image/Dev/custom.svg" asp-append-version="true" alt="" />
+                    <h2>100% Custom Design</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="custom-website">
+        <div class="leftyp">
+            <h1>
+                Custom Website Development
+            </h1>
+            <h2>
+                Pertinent Skills - Perfect Systems & Phenomenal Solutions
+            </h2>
+            <p>
+                Do you have a unique business model and looking for a customized website solution? From simple to complex
+                business requirements, we deliver the most engaging and targeted website development solutions for all.
+
+            </p>
+            <p>
+                Connecting your website to the database and generating automatic queries, developing backend
+                functionalities from CMS and CRM integration, making your online shop work efficiently and effectively;
+                We not only provide a website but a complete system.
+
+            </p>
+            <ul>
+                <li>
+                    Web Applications Development
+                </li>
+                <li>
+                    Customized Software
+                </li>
+                <li>
+                    B2B & B2C Portals Development
+                </li>
+                <li>
+                    CMS & CRM Integration
+                </li>
+                <li>
+                    Flash Development
+                </li>
+                <li>
+                    ERP Integration
+                </li>
+                <li>
+                    Ecommerce Web Development
+                </li>
+                <li>
+                    Database Integration
+                </li>
+                <li>
+                    Business Processes Automation
+                </li>
+                <li>
+                    Payment Systems Management
+                </li>
+            </ul>
+        </div>
+        <div class="rightyp">
+            <form class="ui form">
+
+                <h1>100% Money Back Guarantee</h1>
+                <h1> GET 20% DISCOUNT</h1>
+                <div class="field">
+                    <label>Name</label>
+                    <input type="text" name="name" required placeholder="Name">
+                </div>
+                <div class="field">
+                    <label>Email</label>
+                    <input type="email" name="email" required placeholder="Email">
+                </div>
+                <div class="field">
+                    <label for="">
+                        Select Service
+                    </label>
+                    <label>Select Service</label>
+                    <select name="id" class="ui dropdown" asp-items="@(new SelectList(ViewBag.Services, "id", "ServiceName"))"></select>
+
+                </div>
+                <div class="field">
+                    <label>Number</label>
+                    <input type="tel" name="phone" placeholder="Number">
+                </div>
+                <div class="field">
+                    <label>Message</label>
+                    <textarea id="msg-area"></textarea>
+                </div>
+                <!-- <div class="field">
+                  <div class="ui checkbox">
+                    <input type="checkbox" tabindex="0" class="hidden">
+                    <label>I agree to the Terms and Conditions</label>
+                  </div>
+                </div> -->
+
+                <button class="ui button warning" style="background: rgba(255, 255, 255, 0.699) !important;" type="submit">Submit</button>
+
+            </form>
+
+        </div>
+    </div>
+   
+
+    <!-- packages -->
+    <div class="packages">
+        <h1 id="custom-website-design">
+            Custom Website Design Packages at Affordable Prices!
+        </h1>
+        <div class="packs-content">
+            @foreach (var package in Model.Packages)
+            {
+                var discountPrice = (package.DiscountPercent / 100) * package.TotalPrice;
+
+                <div class="pack1">
+                    <div class="pack-price">
+                        <div>
+                            <h1>@package.PkgName</h1>
+                            <p>@package.Ser_Name PACKAGE</p>
+                        </div>
+                        <p>@package.TotalPrice</p>
+                    </div>
+                    <div class="pack-features">
+                        <div class=""></div>
+                        @foreach (var desc in package.Description)
+                        {
+                            <h2>@desc</h2>
+                        }
+
+                    </div>
+                    <div class="pack-order">
+                        <div class="row-1">
+                            <p>SPECIAL DISCOUNT</p>
+                            <P>-$@discountPrice</P>
+                        </div>
+
+                        <div class="row-3">
+                            <p>FINAL PRICE FOR LIMITED TIME</p>
+                            @{ var priceDiff = package.TotalPrice - discountPrice; }
+                            <h1>$@priceDiff</h1>
+
+                        </div>
+
+                        <div class="row-4">
+                            <a class="ui button yellow" asp-controller="Order" asp-action="Create" asp-route-Ser_Id="@package.Ser_Id" asp-route-Pkg_id="@package.id">ORDER NOW </a>
+                        </div>
+                        <div class="row-5">
+                            <p>Discuss this offer with expert</p>
+                            <div class="discuss">
+                                <p>12345467889</p>
+                                <p id="chat-btn_3">Live Chat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+        <div class="two-btn" style="display:flex; justify-content:center">
+            @foreach (var service in ViewBag.Services)
+            {
+                var iconPath = "~/Image/Services/" + service.IconPath;
+                <a asp-controller="Packages" asp-action="ServicePackages" asp-route-Ser_Id="@service.id" class="px-2 ui button primary">  <img src="@iconPath" width="20" height="20" style="margin-right:6px;" asp-append-version="true" alt=""> @service.ServiceName </a>
+            }
+        </div>
+    <!-- our recent work -->
+    <div class="recent-work">
+        <h1>Our Recent Work</h1>
+        <div class="works">
+            @{ var i = 0;}
+            @foreach (var portfolio in Model.Portfolios)
+                    {
+                        var path = "~/Image/Portfolio/" + portfolio.PhotoPath;
+                <div class="work-@i same">
+                    <a href="#">
+                        <img src="@path" asp-append-version="true" />
+                    </a>
+                </div>
+
+            }
+        </div>
+        <div class="two-btn">
+            @foreach (var service in ViewBag.Services)
+            {
+                var iconPath = "~/Image/Services/" + service.IconPath;
+                <a asp-controller="Portfolio" asp-action="ServicePortfolio" asp-route-Ser_Id="@service.id" class="px-2 button ui primary">  <img src="@iconPath" width="20" height="20" style="margin-right:6px;"  asp-append-version="true" alt=""> @service.ServiceName </a>
+            }
+        </div>
+    </div>
+    <!-- testimonials -->
+    <section class="testimonials">
+        <div class="test-heading">
+            <h1>What Clients Say</h1>
+            <p>Reviews From Our Happy Clients</p>
+        </div>
+        <div class="tests">
+            <div class="left-arrow"></div>
+
+
+            <div class="test-slide">
+
+                @foreach (var review in Model.Reviews)
+                {
+                    var UserImage = "~/Image/User/" + review.UserPhoto;
+                    <div class="card">
+                        <img src="@UserImage" alt="">
+                        <div class="review-stars d-flex">
+                            <!-- for loop star -->
+                            @for (int j = 1; i <= review.Rating; j++)
+                            {
+                                <img src="~/Image/Dev/Orange_star.svg" alt="">
+                            }
+
+                        </div>
+                        <p>
+                            @review.Desc
+                        </p>
+                    </div>
+                }
+
+            </div>
+            <div class="right-arrow"></div>
+        </div>
+        <a asp-controller="Home" asp-action="testimonials" class="goto-testimonial">See All Reviews</a>
+    </section>
+
+    <!-- why choose us -->
+    <!-- why choose us -->
+    <div class="why-choose-us">
+        <h1 class="heading">Why choose us?</h1>
+        <div class="satisfaction">
+            <img src="~/Image/Dev/satis.svg" asp-append-version="true" alt="" />
+            <div>
+                <h1>100% Customer Satisfaction</h1>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam
+                    porro dolores nobis nostrum non in quaerat, quisquam alias hic
+                    temporibus a fuga assumenda unde ex nam fugit sequi sapiente velit.
+                </p>
+            </div>
+        </div>
+        <div class="craft">
+            <img src="~/Image/Dev/effort.svg" asp-append-version="true" alt="" />
+            <div class="">
+                <h1>We Craft Your Brand Identity</h1>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                    nobis ut, pariatur excepturi vero magni voluptatum et veniam debitis
+                    aspernatur adipisci similique! Ea laboriosam at sint, beatae quis
+                    quisquam in!
+                </p>
+            </div>
+        </div>
+        <div class="experience">
+            <img src="~/Image/Dev/user-experience.svg" asp-append-version="true" alt="" />
+            <div class="">
+                <h1>12 Years Experience in Serving More than 40 Industries!</h1>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                    nobis ut, pariatur excepturi vero magni voluptatum et veniam debitis
+                    aspernatur adipisci similique! Ea laboriosam at sint, beatae quis
+                    quisquam in!
+                </p>
+            </div>
+        </div>
+        <div class="support">
+            <img src="~/Image/Dev/support.svg" asp-append-version="true" alt="" />
+            <div class="">
+                <h1>24x7 Customer Support Unit</h1>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                    nobis ut, pariatur excepturi vero magni voluptatum et veniam debitis
+                    aspernatur adipisci similique! Ea laboriosam at sint, beatae quis
+                    quisquam in!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="servs">
+            <ul>
+                <li>
+                    <h2>SERVICES</h2>
+                </li>
+                <li><a asp-controller="Home" asp-action="Logo">Logo Design</a></li>
+                <li><a asp-controller="Home" asp-action="WebDesign">Web Design</a></li>
+                <li><a asp-controller="Home" asp-action="WebDev">Web Development</a></li>
+                <li>
+                    <h2>Services On Demand</h2>
+                </li>
+                <li><a href="#">Apps & Games Development</a></li>
+                <li><a href="#">Mobile Website Design</a></li>
+                <li><a href="#">Animated Video</a></li>
+                <li><a href="#">Print & Packaging</a></li>
+                <li><a href="#">Online Marketing</a></li>
+                <li><a href="#">Copywriting Services</a></li>
+                <li><a href="#">Search Engine Optimization</a></li>
+            </ul>
+        </div>
+        <div class="sitename">
+            <ul>
+                <li>
+                    <h2>Site Name</h2>
+                </li>
+                <li><a asp-controller="Home" asp-action="HowItWorks" asp-route-Ser_Id="@Model.Services.id">How it Works</a></li>
+                <li><a asp-controller="Packages" asp-action="ServicePackages" asp-route-Ser_Id="@Model.Services.id">Packages</a></li>
+                <li><a asp-controller="Portfolio" asp-action="ServicePortfolio" asp-route-Ser_Id="@Model.Services.id">Our Work</a></li>
+                <li><a asp-controller="Home" asp-action="testimonials">Testimonials</a></li>
+                <li><a href="#">In the media</a></li>
+            </ul>
+            <ul>
+                <li>
+                    <h2>CONNECTIVITY</h2>
+                </li>
+                <li><a href="#">Our Blog</a></li>
+                <li><a href="#">Corporate Brochure</a></li>
+                <li><a href="#">Portfolio Brochure</a></li>
+                <li><a href="#">SEO Document</a></li>
+            </ul>
+        </div>
+        <div class="legel">
+            <ul>
+                <li>
+                    <h2>CONTACT & LEGAL</h2>
+                </li>
+                <li><a asp-controller="Home" asp-action="Privacy">Privacy & Security</a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Contact Us</a></li>
+                <li><a asp-controller="Home" asp-action="SiteMap">Sitemap</a></li>
+                <li><a asp-controller="Home" asp-action="Terms">Condition & Policy</a></li>
+            </ul>
+            <ul>
+                <li>
+                    <h2>PARTNER WITH US</h2>
+                </li>
+                <li><a href="#">Affiliate Program</a></li>
+                <li><a href="#">Reseller Program</a></li>
+            </ul>
+        </div>
+        <div class="payment">
+            <h2>CONTACT & LEGAL</h2>
+            <img src="~/Image/Dev/facebook.svg" asp-append-version="true" alt="" />
+            <img src="~/Image/Dev/youtube.svg" alt="" />
+            <img src="~/Image/Dev/gmail.svg" alt="" />
+            <img src="~/Image/Dev/twitter.svg" alt="" />
+            <img src=".~/Image/Dev/paypal.png" alt="" />
+        </div>
+        <div class="contact">
+            <ul>
+                <li>
+                    <h2>CONTACT US</h2>
+                </li>
+                <li><a href="#">12345678</a></li>
+                <li><a href="#">abc@gmail.com</a></li>
+                <li><a id="chat-btn_9" href="#">Live chat</a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Request Callback</a></li>
+            </ul>
+        </div>
+        <div class="foot">
+            <p>
+                © 2019 LogoDesignPros All Rights Reserved.<br />
+                Disclaimer: The logo, name and graphics of Logo Design Pros and its
+                products & services are the trademarks<br />
+                of Logo Design Pros. All other company names, brand names, trademarks
+                and logos mentioned on this website are the property of their
+                respective owners and<br />
+                do not constitute or imply endorsement, sponsorship or recommendation
+                thereof by Logo Design Pros and do not constitute or imply
+                endorsement,<br />
+                sponsorship or recommendation of Logo Design Pros by the respective
+                trademark owner.
+            </p>
+        </div>
+    </footer>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+
+    <script src="~/js/main.js"></script>
+    <script>
+        window.onload = async function () {
+
+            const req = await fetch('/Home/GetAllServices');
+            const data = await req.json();
+            const menus = document.getElementById("menu");
+            data.forEach(row => {
+                const li = document.createElement("li");
+                li.innerHTML = `  <li>
+                                                    <h1 class="dropdown"> ${row.ServiceName}</h1>
+                                                    <ul class="data-dropdown">
+                                                        <li><a href="/Porfolio/ServicePortfolio/${row.id}">Portfolio</a></li>
+                                                        <li><a href="/Packages/ServicePackages/${row.id}">Packages</a></li>
+                                                        <li><a href="/Home/HowItWork">How It Works</a></li>
+                                                    </ul>
+                                                </li>`;
+                menus.insertBefore(li);
+            })
+        }
+    </script>
+</body>
+</html>

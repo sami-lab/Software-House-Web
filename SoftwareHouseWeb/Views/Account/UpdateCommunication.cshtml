@@ -1,0 +1,280 @@
+﻿@model SoftwareHouseWeb.ViewModel.Account.UpdateCommunicationViewModel
+
+@{
+    ViewData["Title"] = "UpdateCommunication";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="crums">
+    <a href="">@User.Identity.Name Account</a>
+    >>
+    <p>Communication Preference</p>
+</div>
+<div class="chead">
+    <h1>
+        Update Profile
+    </h1>
+    <p>
+        Update your communication information, such as phone number, email address or the best time to call you at your own convenience.
+
+    </p>
+</div>
+<div class="form-section">
+    <form class="ui form" method="post">
+        <div class="form-row d-flex align-center" style="background: var(--green);">
+            <h1 style="margin-left: 2rem;color: white;">
+                Communication Preferences
+
+            </h1>
+        </div>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-row">
+            <div class="col-l">
+                <h2>Indicate your 1st preferred medium of communication for communicating with us:	</h2>
+            </div>
+            <div class="col-r">
+                <div class="field">
+
+                    <div class="ui selection dropdown">
+                        @*<input type="hidden"  name="communicate-1" required>*@
+                        <input type="hidden" asp-for="FirstPreferences" required>
+                        <span asp-validation-for="FirstPreferences" class="text-danger"></span>
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Select</div>
+                        <div class="menu">
+                            <div class="item" data-value="Phone">Phone</div>
+                            <div class="item" data-value="Chat">Chat</div>
+                            <div class="item" data-value="Email">Email</div>
+                            <div class="item" data-value="SMS">SMS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-l">
+                <h2>Indicate your 2nd preferred medium of communication for communicating with us:</h2>
+            </div>
+            <div class="col-r">
+                <div class="field">
+
+                    <div class="ui selection dropdown">
+                        @*<input type="hidden" name="communicate-2">*@
+                        <input type="hidden" asp-for="SecondPreferences">
+                        <span asp-validation-for="SecondPreferences" class="text-danger"></span>
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Select</div>
+                        <div class="menu">
+                            <div class="item" data-value="Phone">Phone</div>
+                            <div class="item" data-value="Chat">Chat</div>
+                            <div class="item" data-value="Email">Email</div>
+                            <div class="item" data-value="SMS">SMS</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="" style="margin: 2rem;">
+            <h2>
+                Time Preferences
+            </h2>
+            <p>Please provide preferred time to contact you according to your area. We highly recommend you to provide more than one preferred contact time. This will increase your availability and will expedite the communication procedure.</p>
+        </div>
+
+        <div class="form-row">
+            <div class="col-l">
+                <h2>1st Preferred Time <span style="color: red;font-size: 20px;">*</span></h2>
+            </div>
+            <div class="col-r setting justify-center" style="flex-flow: row; ">
+
+
+                <h3>From</h3>
+                <div class="field">
+
+                    <div class="ui selection dropdown time">
+                        @*<input type="hidden" name="">*@
+                        <input type="hidden" asp-for="FirstPreferedTimeStart">
+                        <span asp-validation-for="FirstPreferedTimeStart" class="text-danger"></span>
+                        <div class="default text">HH:MM</div>
+                        <div class="menu">
+                            <div class="item" data-value="00:00:00">00:00</div>
+                            <div class="item" data-value="01:00:00">01:00</div>
+                            <div class="item" data-value="02:00:00">02:00</div>
+                            <div class="item" data-value="03:00:00">03:00</div>
+                            <div class="item" data-value="04:00:00">04:00</div>
+                            <div class="item" data-value="05:00:00">05:00</div>
+                            <div class="item" data-value="06:00:00">06:00</div>
+                            <div class="item" data-value="07:00:00">07:00</div>
+                            <div class="item" data-value="08:00:00">08:00</div>
+                            <div class="item" data-value="09:00:00">09:00</div>
+                            <div class="item" data-value="10:00:00">10:00</div>
+                            <div class="item" data-value="11:00:00">11:00</div>
+                            <div class="item" data-value="12:00:00">12:00</div>
+                            <div class="item" data-value="13:00:00">13:00</div>
+                            <div class="item" data-value="14:00:00">14:00</div>
+                            <div class="item" data-value="15:00:00">15:00</div>
+                            <div class="item" data-value="16:00:00">16:00</div>
+                            <div class="item" data-value="17:00:00">17:00</div>
+                            <div class="item" data-value="18:00:00">18:00</div>
+                            <div class="item" data-value="19:00:00">19:00</div>
+                            <div class="item" data-value="20:00:00">20:00</div>
+                            <div class="item" data-value="21:00:00">21:00</div>
+                            <div class="item" data-value="22:00:00">22:00</div>
+                            <div class="item" data-value="23:00:00">23:00</div>
+                        </div>
+                    </div>
+                </div>
+                <h3>To</h3>
+                <div class="field ">
+
+
+                    <div class="ui selection dropdown time">
+                        @*<input type="hidden" name="">*@
+                        <input type="hidden" asp-for="FirstPreferedTimeEnd">
+                        <span asp-validation-for="FirstPreferedTimeEnd" class="text-danger"></span>
+                        <div class="default text">HH:MM</div>
+                        <div class="menu">
+                            <div class="item" data-value="00:00:00">00:00</div>
+                            <div class="item" data-value="01:00:00">01:00</div>
+                            <div class="item" data-value="02:00:00">02:00</div>
+                            <div class="item" data-value="03:00:00">03:00</div>
+                            <div class="item" data-value="04:00:00">04:00</div>
+                            <div class="item" data-value="05:00:00">05:00</div>
+                            <div class="item" data-value="06:00:00">06:00</div>
+                            <div class="item" data-value="07:00:00">07:00</div>
+                            <div class="item" data-value="08:00:00">08:00</div>
+                            <div class="item" data-value="09:00:00">09:00</div>
+                            <div class="item" data-value="10:00:00">10:00</div>
+                            <div class="item" data-value="11:00:00">11:00</div>
+                            <div class="item" data-value="12:00:00">12:00</div>
+                            <div class="item" data-value="13:00:00">13:00</div>
+                            <div class="item" data-value="14:00:00">14:00</div>
+                            <div class="item" data-value="15:00:00">15:00</div>
+                            <div class="item" data-value="16:00:00">16:00</div>
+                            <div class="item" data-value="17:00:00">17:00</div>
+                            <div class="item" data-value="18:00:00">18:00</div>
+                            <div class="item" data-value="19:00:00">19:00</div>
+                            <div class="item" data-value="20:00:00">20:00</div>
+                            <div class="item" data-value="21:00:00">21:00</div>
+                            <div class="item" data-value="22:00:00">22:00</div>
+                            <div class="item" data-value="23:00:00">23:00</div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-l">
+                <h2>2nd Preferred Time </h2>
+            </div>
+            <div class="col-r setting justify-center" style="flex-flow: row; ">
+
+
+                <h3>From</h3>
+                <div class="field">
+
+                    <div class="ui selection dropdown time">
+                        @*<input type="hidden" name="">*@
+                        <input type="hidden" asp-for="SecondPreferedTimeStart">
+                        <span asp-validation-for="SecondPreferedTimeStart" class="text-danger"></span>
+                        <div class="default text">HH:MM</div>
+                        <div class="menu">
+                            <div class="item" data-value="00:00:00">00:00</div>
+                            <div class="item" data-value="01:00:00">01:00</div>
+                            <div class="item" data-value="02:00:00">02:00</div>
+                            <div class="item" data-value="03:00:00">03:00</div>
+                            <div class="item" data-value="04:00:00">04:00</div>
+                            <div class="item" data-value="05:00:00">05:00</div>
+                            <div class="item" data-value="06:00:00">06:00</div>
+                            <div class="item" data-value="07:00:00">07:00</div>
+                            <div class="item" data-value="08:00:00">08:00</div>
+                            <div class="item" data-value="09:00:00">09:00</div>
+                            <div class="item" data-value="10:00:00">10:00</div>
+                            <div class="item" data-value="11:00:00">11:00</div>
+                            <div class="item" data-value="12:00:00">12:00</div>
+                            <div class="item" data-value="13:00:00">13:00</div>
+                            <div class="item" data-value="14:00:00">14:00</div>
+                            <div class="item" data-value="15:00:00">15:00</div>
+                            <div class="item" data-value="16:00:00">16:00</div>
+                            <div class="item" data-value="17:00:00">17:00</div>
+                            <div class="item" data-value="18:00:00">18:00</div>
+                            <div class="item" data-value="19:00:00">19:00</div>
+                            <div class="item" data-value="20:00:00">20:00</div>
+                            <div class="item" data-value="21:00:00">21:00</div>
+                            <div class="item" data-value="22:00:00">22:00</div>
+                            <div class="item" data-value="23:00:00">23:00</div>
+                        </div>
+                    </div>
+                </div>
+                <h3>To</h3>
+                <div class="field ">
+
+
+                    <div class="ui selection dropdown time">
+                        @*<input type="hidden" name="">*@
+                        <input type="hidden" asp-for="SecondPreferedTimeEnd">
+                        <span asp-validation-for="SecondPreferedTimeEnd" class="text-danger"></span>
+                        <div class="default text">HH:MM</div>
+                        <div class="menu">
+
+                            <div class="item" data-value="00:00:00">00:00</div>
+                            <div class="item" data-value="01:00:00">01:00</div>
+                            <div class="item" data-value="02:00:00">02:00</div>
+                            <div class="item" data-value="03:00:00">03:00</div>
+                            <div class="item" data-value="04:00:00">04:00</div>
+                            <div class="item" data-value="05:00:00">05:00</div>
+                            <div class="item" data-value="06:00:00">06:00</div>
+                            <div class="item" data-value="07:00:00">07:00</div>
+                            <div class="item" data-value="08:00:00">08:00</div>
+                            <div class="item" data-value="09:00:00">09:00</div>
+                            <div class="item" data-value="10:00:00">10:00</div>
+                            <div class="item" data-value="11:00:00">11:00</div>
+                            <div class="item" data-value="12:00:00">12:00</div>
+                            <div class="item" data-value="13:00:00">13:00</div>
+                            <div class="item" data-value="14:00:00">14:00</div>
+                            <div class="item" data-value="15:00:00">15:00</div>
+                            <div class="item" data-value="16:00:00">16:00</div>
+                            <div class="item" data-value="17:00:00">17:00</div>
+                            <div class="item" data-value="18:00:00">18:00</div>
+                            <div class="item" data-value="19:00:00">19:00</div>
+                            <div class="item" data-value="20:00:00">20:00</div>
+                            <div class="item" data-value="21:00:00">21:00</div>
+                            <div class="item" data-value="22:00:00">22:00</div>
+                            <div class="item" data-value="23:00:00">23:00</div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="btn-row">
+            <button asp-controller="Account" asp-action="Profile" class="ui button primary" id="back-btn">BACK TO ACCOUNT AREA</button>
+            <button type="submit" class="ui button primary">SAVE & CONTINUE</button>
+
+        </div>
+    </form>
+</div>
+@section Scripts{
+    <link rel="stylesheet" href="~/css/update-comunication.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/form.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/button.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/transition.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/transition.min.js"></script>
+   <script>
+       $(".ui.dropdown").dropdown()
+    </script>
+    <style>
+        .sticky-navbar {
+            display: grid;
+            position: relative;
+        }
+    </style>
+}

@@ -1,0 +1,400 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link rel="stylesheet" href="~/css/main.css" />
+    <link rel="stylesheet" href="~/css/nav.css" />
+    <link rel="stylesheet" href="~/css/slider.css" />
+    <link rel="stylesheet" href="~/css/footer.css" />
+    <link rel="stylesheet" href="~/css/packages.css" />
+    <link rel="stylesheet" href="~/css/cart.css" />
+    <link rel="stylesheet" href="~/css/livechat.css" />
+    <link rel="stylesheet" href="~/css/sticky-navbar.css" />
+    <link rel="stylesheet" href="~/css/testimonials.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Saira&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Farro&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/media.css">
+
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+        </script>
+    </environment>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <!-- form -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/form.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/button.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/grid.min.css">
+</head>
+<body>
+    <div class="chat-box">
+        <div id="chat-btn">
+            <H2>LIVE CHAT</H2>
+        </div>
+        <div class="messagebox"></div>
+    </div>
+
+    <!-- mobile-nav -->
+    <div class="mobile-nav">
+        <div class="ham">
+            <img src="~/Image/Dev/menu.svg" asp-append-version="true" alt="">
+        </div>
+        <div class="mobile-links">
+            <a id="custom-quote" asp-controller="Home" asp-action="CustomQuote">Request custom quote</a>
+            <a>Call Toll free 123456789</a>
+            <a id="chat-btn_2">Live Chat</a>
+            @*<a id="livechat">Live Chat</a>*@
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a id="acnt" asp-controller="Account" asp-action="Profile"> My Account</a>
+            }
+            else
+            {
+                <a id="acnt" asp-controller="Account" asp-action="Register"> Signup</a>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <a  asp-controller="Home" asp-action="Admin">Admin Home</a>
+            }
+        </div>
+        <div class="logo">
+            <h1>LOGO</h1>
+        </div>
+        <div class="sign">
+            <img id="avatar" src="~/Image/Dev/man.svg" alt="" />
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a asp-controller="Account" asp-action="Logout"><h2>Logout</h2></a>
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="Login"><h2>Login / SignUp</h2></a>
+            }
+        </div>
+    </div>
+
+    <div class="mobile-menu">
+        <div class="cross">
+            <img src="~/Image/Dev/cross.svg" asp-append-version="true" alt="">
+        </div>
+        <div class="menu">
+            <ul id="menu">
+
+                <li> <a asp-controller="Home" asp-action="testimonials"> <h1>Testimonials</h1></a></li>
+                <li><a asp-controller="Home" asp-action="WhyUs"> <h1>Why Us</h1></a></li>
+                <li><a asp-controller="Home" asp-action="OurGurantee"><h1>Our Guarantee</h1></a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- cart -->
+    <nav>
+        <div class="logo">
+            <h2>LOGO</h2>
+        </div>
+        <div class="links">
+            <a id="custom-quote" asp-controller="Home" asp-action="CustomQuote">Request custom quote</a>
+            <a>Call Toll free 123456789</a>
+            @*<a id="livechat">Live Chat</a>*@
+            <a id="chat-btn_5">Live Chat</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a id="acnt" asp-controller="Account" asp-action="Profile"> My Account</a>
+            }
+            else
+            {
+                <a id="acnt" asp-controller="Account" asp-action="Login">Login</a>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-controller="Home" asp-action="Admin">Admin Home</a>
+            }
+        </div>
+        <div class="nav-items" id="desktopMenu">
+            <h3 id="logo">Logo Design</h3>
+            <h3 id="webdesign"> Website Design</h3>
+            <h3 id="webdev">Website Development</h3>
+            <a asp-controller="Home" asp-action="testimonials"> <h3>Testimonials</h3></a>
+
+            <a asp-controller="Home" asp-action="WhyUs"> <h3>Why Us</h3></a>
+            <a asp-controller="Home" asp-action="OurGurantee"><h3>Our Guarantee</h3></a>
+        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="three-btn">
+                <img id="avatar" src="~/Image/Dev/man.svg" asp-append-version="true" alt="" />
+                <a asp-controller="Account" asp-action="Profile"><h2>Profile</h2></a>
+
+            </div>
+        }
+        else
+        {
+            <div class="three-btn">
+                <img id="avatar" src="~/Image/Dev/man.svg" alt="" />
+                <a asp-controller="Account" asp-action="Login"><h2>Login / SignUp</h2></a>
+
+            </div>
+        }
+
+
+    </nav>
+    <div class="nav-item-expand">
+        <div class="portfolio">
+            <img src="~/Image/Dev/portfolio-icon.png" asp-append-version="true" alt="">
+            <a asp-controller="Portfolio" asp-action="Index"><h2>Portfolio</h2></a>
+        </div>
+        <div class="our-packages">
+            <img src="~/Image/Dev/package-icon.png" asp-append-version="true" alt="">
+            <a asp-controller="Packages" asp-action="Index"> <h2>Our Packages</h2></a>
+        </div>
+        <div class="how-it-works">
+            <img src="~/Image/Dev/setting-icon.png" asp-append-version="true" alt="">
+            <a asp-controller="Home" asp-action="HowItWork"> <h2>How It Works</h2></a>
+        </div>
+
+    </div>
+    <!-- sticky navbar -->
+    <div class="sticky-navbar">
+        <div>
+            <h2>Logo</h2>
+        </div>
+        <div class="sticky-items" >
+            <h3 id="logo2">Logo Design</h3>
+            <h3 id="webdesign2">Website Design </h3>
+            <h3 id="webdev2">Website Development</h3>
+        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+
+            <div class="three-btn">
+                <img id="sticky-avatar" src="~/Image/Dev/man.svg" asp-append-version="true" alt="" />
+                <a asp-controller="Account" asp-action="Profile"><h2>Profile</h2></a>
+
+            </div>
+        }
+        else
+        {
+            <div class="three-btn">
+                <img id="sticky-avatar" src="~/Image/Dev/man.svg" asp-append-version="true" alt="" />
+                <a asp-controller="Account" asp-action="Login"><h2>Login / SignUp</h2></a>
+
+            </div>
+        }
+    </div>
+    <div class="nav-item-expand-sticky">
+        <div class="portfolio">
+            <!--  -->
+            <img src="~/Image/Dev/portfolio-icon.png" asp-append-version="true" alt="">
+            <a asp-controller="Portfolio" asp-action="Index"><h2>Portfolio</h2></a>
+        </div>
+        <div class="our-packages">
+            <img src="~/Image/Dev/package-icon.png" asp-append-version="true" alt="">
+            <a asp-controller="Packages" asp-action="Index"> <h2>Our Packages</h2></a>
+        </div>
+        <div class="how-it-works">
+            <img src="~/Image/Dev/setting-icon.png" asp-append-version="true" alt="">
+            <a asp-controller="Home" asp-action="HowItWork"> <h2>How It Works</h2></a>
+        </div>
+
+    </div>
+
+    <div class="container ">
+        @RenderBody()
+        @RenderSection("Scripts", false)
+    </div>
+    <!-- why choose us -->
+    <div class="why-choose-us">
+        <h1 class="heading">Why choose us?</h1>
+        <div class="satisfaction">
+            <img src="~/Image/Dev/satis.svg" asp-append-version="true" alt="" />
+            <div>
+                <h1>100% Customer Satisfaction</h1>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam
+                    porro dolores nobis nostrum non in quaerat, quisquam alias hic
+                    temporibus a fuga assumenda unde ex nam fugit sequi sapiente velit.
+                </p>
+            </div>
+        </div>
+        <div class="craft">
+            <img src="~/Image/Dev/effort.svg" asp-append-version="true" alt="" />
+            <div class="">
+                <h1>We Craft Your Brand Identity</h1>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                    nobis ut, pariatur excepturi vero magni voluptatum et veniam debitis
+                    aspernatur adipisci similique! Ea laboriosam at sint, beatae quis
+                    quisquam in!
+                </p>
+            </div>
+        </div>
+        <div class="experience">
+            <img src="~/Image/Dev/user-experience.svg" asp-append-version="true" alt="" />
+            <div class="">
+                <h1>12 Years Experience in Serving More than 40 Industries!</h1>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                    nobis ut, pariatur excepturi vero magni voluptatum et veniam debitis
+                    aspernatur adipisci similique! Ea laboriosam at sint, beatae quis
+                    quisquam in!
+                </p>
+            </div>
+        </div>
+        <div class="support">
+            <img src="~/Image/Dev/support.svg" asp-append-version="true" alt="" />
+            <div class="">
+                <h1>24x7 Customer Support Unit</h1>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                    nobis ut, pariatur excepturi vero magni voluptatum et veniam debitis
+                    aspernatur adipisci similique! Ea laboriosam at sint, beatae quis
+                    quisquam in!
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <footer>
+        <div class="servs">
+            <ul>
+                <li>
+                    <h2>SERVICES</h2>
+                </li>
+                <li><a asp-controller="Home" asp-action="Logo">Logo Design</a></li>
+                <li><a asp-controller="Home" asp-action="WebDesign">Web Design</a></li>
+                <li><a asp-controller="Home" asp-action="WebDev">Web Development</a></li>
+                <li>
+                    <h2>Services On Demand</h2>
+                </li>
+                <li><a href="#">Apps & Games Development</a></li>
+                <li><a href="#">Mobile Website Design</a></li>
+                <li><a href="#">Animated Video</a></li>
+                <li><a href="#">Print & Packaging</a></li>
+                <li><a href="#">Online Marketing</a></li>
+                <li><a href="#">Copywriting Services</a></li>
+                <li><a href="#">Search Engine Optimization</a></li>
+            </ul>
+        </div>
+        <div class="sitename">
+            <ul>
+                <li>
+                    <h2>Site Name</h2>
+                </li>
+                <li><a asp-controller="Packages" asp-action="Index">Packages</a></li>
+                <li><a asp-controller="Portfolio" asp-action="Index">Our Work</a></li>
+                <li><a asp-controller="Home" asp-action="testimonials">Testimonials</a></li>
+                <li><a href="#">In the media</a></li>
+            </ul>
+            <ul>
+                <li>
+                    <h2>CONNECTIVITY</h2>
+                </li>
+                <li><a href="#">Our Blog</a></li>
+                <li><a href="#">Corporate Brochure</a></li>
+                <li><a href="#">Portfolio Brochure</a></li>
+                <li><a href="#">SEO Document</a></li>
+            </ul>
+        </div>
+        <div class="legel">
+            <ul>
+                <li>
+                    <h2>CONTACT & LEGAL</h2>
+                </li>
+                <li><a asp-controller="Home" asp-action="Privacy">Privacy & Security</a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Contact Us</a></li>
+                <li><a asp-controller="Home" asp-action="SiteMap">Sitemap</a></li>
+                <li><a asp-controller="Home" asp-action="Terms">Condition & Policy</a></li>
+            </ul>
+            <ul>
+                <li>
+                    <h2>PARTNER WITH US</h2>
+                </li>
+                <li><a href="#">Affiliate Program</a></li>
+                <li><a href="#">Reseller Program</a></li>
+            </ul>
+        </div>
+        <div class="payment">
+            <h2>CONTACT & LEGAL</h2>
+            <img src="~/Image/Dev/facebook.svg" asp-append-version="true" alt="" />
+            <img src="~/Image/Dev/youtube.svg" alt="" />
+            <img src="~/Image/Dev/gmail.svg" alt="" />
+            <img src="~/Image/Dev/twitter.svg" alt="" />
+            <img src="~/Image/Dev/paypal.png" alt="" />
+        </div>
+        <div class="contact">
+            <ul>
+                <li>
+                    <h2>CONTACT US</h2>
+                </li>
+                <li><a href="#">12345678</a></li>
+                <li><a href="#">abc@gmail.com</a></li>
+                <li><a id="chat-btn_9" href="#">Live chat</a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Request Callback</a></li>
+            </ul>
+        </div>
+        <div class="foot">
+            <p>
+                © 2019 LogoDesignPros All Rights Reserved.<br />
+                Disclaimer: The logo, name and graphics of Logo Design Pros and its
+                products & services are the trademarks<br />
+                of Logo Design Pros. All other company names, brand names, trademarks
+                and logos mentioned on this website are the property of their
+                respective owners and<br />
+                do not constitute or imply endorsement, sponsorship or recommendation
+                thereof by Logo Design Pros and do not constitute or imply
+                endorsement,<br />
+                sponsorship or recommendation of Logo Design Pros by the respective
+                trademark owner.
+            </p>
+        </div>
+    </footer>
+
+
+   
+    @*<script src="~/js/main.js"></script>*@
+    @*<script>
+        window.onload = async function () {
+
+            const req = await fetch('/Home/GetAllServices');
+            const data = await req.json();
+            const menus = document.getElementById("menu");
+            data.forEach(row => {
+                const li = document.createElement("li");
+                li.innerHTML = `  <li>
+                            <h1 class="dropdown"> ${row.serviceName}</h1>
+                            <ul class="data-dropdown">
+                                <li><a href="/Porfolio/ServicePortfolio/${row.id}">Portfolio</a></li>
+                                <li><a href="/Packages/ServicePackages/${row.id}">Packages</a></li>
+                                <li><a href="/Home/HowItWork">How It Works</a></li>
+                            </ul>
+                        </li>`;
+               // menus.insertBefore(li);
+            })
+        }
+    </script>*@
+</body>
+</html>

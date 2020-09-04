@@ -1,0 +1,84 @@
+﻿@model IEnumerable<SoftwareHouseWeb.ViewModel.Administration.RegisterEmployeeViewModel>
+@{
+    ViewData["Title"] = "List Employees";
+}
+
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Data Table</h4>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered zero-configuration">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                    <th>Skills</th>
+                                    <th>Age</th>
+                                    <th>Start date</th>
+                                    <th>Salary</th>
+                                    <th>Delete Info</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var Emp in Model)
+                                {
+
+
+                                <tr>
+                                    <td>@Emp.Name</td>
+                                    <td>@Emp.Position</td>
+                                    <td>@Emp.Skills</td>
+                                    <td>@Emp.age</td>
+                                    <td>@Emp.StartDate.ToString("yyyy-MM-dd")</td>
+                                    <td>$@Emp.Salary</td>
+                                    <td>
+                                        
+                                        <form method="post" class="form-inline" asp-action="DeleteEmployee" asp-route-id="@Emp.Employee_id">
+
+                                            <span id="confirmDeleteSpan_@Emp.Employee_id" style="display:none">
+                                                <span><b>Are you sure you want to delete?</b></span>
+                                                <button type="submit" class="btn btn-danger">Yes</button>
+                                                <a href="#/" class="btn btn-primary"
+                                                   onclick="confirmDelete('@Emp.Employee_id', false)">No</a>
+                                            </span>
+
+                                            <span id="deleteSpan_@Emp.Employee_id">
+                                                <a href="#/" class="btn btn-danger"
+                                                   onclick="confirmDelete('@Emp.Employee_id', true)">Delete</a>
+                                            </span>
+                                        </form>
+                                    </td>
+                                </tr>
+                                }
+                             
+                             
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                    <th>Skills</th>
+                                    <th>Age</th>
+                                    <th>Start date</th>
+                                    <th>Salary</th>
+                                    <th>Delete Info</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <a asp-controller="Administrator" asp-action="AddEmployee" class="text-white bg-success p-3 d-flex justify-content-center align-items-center">Add New</a>
+        </div>
+    </div>
+</div>
+@section Scripts{ 
+<script src="~/js/CustomScript.js"></script>
+}

@@ -1,0 +1,699 @@
+﻿@model SoftwareHouseWeb.ViewModel.OrderViewModel.OrderViewModel
+
+@{
+    ViewData["Title"] = "Order";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+    List<string> Preferences = new List<string>() { "Phone", "Chat", "Email", "SMS" };
+}
+
+
+<div class="getstarted">
+    <h1>Lets's get started with your project!</h1>
+    <p>Please provide the information requested below</p>
+</div>
+<div class="stepper">
+
+    <div class="offset-1"></div>
+    <div id="col_1" class="col-1 circle-setting">
+        <div class="circle on flex-center">1</div>
+    </div>
+    <div id="col_3" class="col-2 circle-setting">
+        <div class="circle  flex-center">2</div>
+    </div>
+    <div id="col_3" class="col-3 circle-setting">
+        <div class="circle flex-center">3</div>
+    </div>
+    <div class="col-4 circle-setting">
+        <div class="circle flex-center">4</div>
+    </div>
+    <div class="offset-2 circle-setting" style="border: none !important;">
+        <div class="circle flex-center">5</div>
+    </div>
+    <div class="offset-3"></div>
+    <div class="col-5 flex-center">
+        <h3>
+            YOUR PERSONAL DETAILS
+
+        </h3>
+    </div>
+    <div class="col-6 flex-center">
+        <h3>PACKAGE SELECTION</h3>
+    </div>
+    <div class="col-7 flex-center">
+        <h3>
+            ORDER SUMMARY
+
+        </h3>
+    </div>
+    <div class="col-8 flex-center">
+        <h3>
+            PAYMENT
+
+        </h3>
+    </div>
+    <div class="col-9 flex-center">
+        <h3>
+            THANK YOU
+
+        </h3>
+    </div>
+</div>
+<form method="post"  asp-action="create" >
+    <div>
+        @*class="maincontainer"*@
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <span asp-validation-for="cus_name" class="text-danger"></span>
+        <span asp-validation-for="Email" class="text-danger"></span>
+        <span asp-validation-for="cus_phone" class="text-danger"></span>
+        <span asp-validation-for="Country" class="text-danger"></span>
+        <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+
+        <div class="signup-form" id="page_1">
+            <div class="head">
+                <h1>Your Personal Details</h1>
+            </div>
+            <div class="ui big form">
+                <div class="two fields">
+                    <div class="six wide field">
+                        <label>Name</label>
+                        <input asp-for="cus_name" placeholder="Name">
+                        <span asp-validation-for="cus_name" class="text-danger"></span>
+                    </div>
+                    <div class="six wide field">
+                        <label>Email</label>
+                        <input asp-for="Email" placeholder="Email">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="six wide field">
+                        <select asp-for="Country" class="ui search dropdown">
+                            <option value="">Select Country</option>
+                            <option value="AF">Afghanistan</option>
+                            <option value="AX">Åland Islands</option>
+                            <option value="AL">Albania</option>
+                            <option value="DZ">Algeria</option>
+                            <option value="AS">American Samoa</option>
+                            <option value="AD">Andorra</option>
+                            <option value="AO">Angola</option>
+                            <option value="AI">Anguilla</option>
+                            <option value="AQ">Antarctica</option>
+                            <option value="AG">Antigua and Barbuda</option>
+                            <option value="AR">Argentina</option>
+                            <option value="AM">Armenia</option>
+                            <option value="AW">Aruba</option>
+                            <option value="AU">Australia</option>
+                            <option value="AT">Austria</option>
+                            <option value="AZ">Azerbaijan</option>
+                            <option value="BS">Bahamas</option>
+                            <option value="BH">Bahrain</option>
+                            <option value="BD">Bangladesh</option>
+                            <option value="BB">Barbados</option>
+                            <option value="BY">Belarus</option>
+                            <option value="BE">Belgium</option>
+                            <option value="BZ">Belize</option>
+                            <option value="BJ">Benin</option>
+                            <option value="BM">Bermuda</option>
+                            <option value="BT">Bhutan</option>
+                            <option value="BO">Bolivia, Plurinational State of</option>
+                            <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
+                            <option value="BA">Bosnia and Herzegovina</option>
+                            <option value="BW">Botswana</option>
+                            <option value="BV">Bouvet Island</option>
+                            <option value="BR">Brazil</option>
+                            <option value="IO">British Indian Ocean Territory</option>
+                            <option value="BN">Brunei Darussalam</option>
+                            <option value="BG">Bulgaria</option>
+                            <option value="BF">Burkina Faso</option>
+                            <option value="BI">Burundi</option>
+                            <option value="KH">Cambodia</option>
+                            <option value="CM">Cameroon</option>
+                            <option value="CA">Canada</option>
+                            <option value="CV">Cape Verde</option>
+                            <option value="KY">Cayman Islands</option>
+                            <option value="CF">Central African Republic</option>
+                            <option value="TD">Chad</option>
+                            <option value="CL">Chile</option>
+                            <option value="CN">China</option>
+                            <option value="CX">Christmas Island</option>
+                            <option value="CC">Cocos (Keeling) Islands</option>
+                            <option value="CO">Colombia</option>
+                            <option value="KM">Comoros</option>
+                            <option value="CG">Congo</option>
+                            <option value="CD">Congo, the Democratic Republic of the</option>
+                            <option value="CK">Cook Islands</option>
+                            <option value="CR">Costa Rica</option>
+                            <option value="CI">Côte d'Ivoire</option>
+                            <option value="HR">Croatia</option>
+                            <option value="CU">Cuba</option>
+                            <option value="CW">Curaçao</option>
+                            <option value="CY">Cyprus</option>
+                            <option value="CZ">Czech Republic</option>
+                            <option value="DK">Denmark</option>
+                            <option value="DJ">Djibouti</option>
+                            <option value="DM">Dominica</option>
+                            <option value="DO">Dominican Republic</option>
+                            <option value="EC">Ecuador</option>
+                            <option value="EG">Egypt</option>
+                            <option value="SV">El Salvador</option>
+                            <option value="GQ">Equatorial Guinea</option>
+                            <option value="ER">Eritrea</option>
+                            <option value="EE">Estonia</option>
+                            <option value="ET">Ethiopia</option>
+                            <option value="FK">Falkland Islands (Malvinas)</option>
+                            <option value="FO">Faroe Islands</option>
+                            <option value="FJ">Fiji</option>
+                            <option value="FI">Finland</option>
+                            <option value="FR">France</option>
+                            <option value="GF">French Guiana</option>
+                            <option value="PF">French Polynesia</option>
+                            <option value="TF">French Southern Territories</option>
+                            <option value="GA">Gabon</option>
+                            <option value="GM">Gambia</option>
+                            <option value="GE">Georgia</option>
+                            <option value="DE">Germany</option>
+                            <option value="GH">Ghana</option>
+                            <option value="GI">Gibraltar</option>
+                            <option value="GR">Greece</option>
+                            <option value="GL">Greenland</option>
+                            <option value="GD">Grenada</option>
+                            <option value="GP">Guadeloupe</option>
+                            <option value="GU">Guam</option>
+                            <option value="GT">Guatemala</option>
+                            <option value="GG">Guernsey</option>
+                            <option value="GN">Guinea</option>
+                            <option value="GW">Guinea-Bissau</option>
+                            <option value="GY">Guyana</option>
+                            <option value="HT">Haiti</option>
+                            <option value="HM">Heard Island and McDonald Islands</option>
+                            <option value="VA">Holy See (Vatican City State)</option>
+                            <option value="HN">Honduras</option>
+                            <option value="HK">Hong Kong</option>
+                            <option value="HU">Hungary</option>
+                            <option value="IS">Iceland</option>
+                            <option value="IN">India</option>
+                            <option value="ID">Indonesia</option>
+                            <option value="IR">Iran, Islamic Republic of</option>
+                            <option value="IQ">Iraq</option>
+                            <option value="IE">Ireland</option>
+                            <option value="IM">Isle of Man</option>
+                            <option value="IL">Israel</option>
+                            <option value="IT">Italy</option>
+                            <option value="JM">Jamaica</option>
+                            <option value="JP">Japan</option>
+                            <option value="JE">Jersey</option>
+                            <option value="JO">Jordan</option>
+                            <option value="KZ">Kazakhstan</option>
+                            <option value="KE">Kenya</option>
+                            <option value="KI">Kiribati</option>
+                            <option value="KP">Korea, Democratic People's Republic of</option>
+                            <option value="KR">Korea, Republic of</option>
+                            <option value="KW">Kuwait</option>
+                            <option value="KG">Kyrgyzstan</option>
+                            <option value="LA">Lao People's Democratic Republic</option>
+                            <option value="LV">Latvia</option>
+                            <option value="LB">Lebanon</option>
+                            <option value="LS">Lesotho</option>
+                            <option value="LR">Liberia</option>
+                            <option value="LY">Libya</option>
+                            <option value="LI">Liechtenstein</option>
+                            <option value="LT">Lithuania</option>
+                            <option value="LU">Luxembourg</option>
+                            <option value="MO">Macao</option>
+                            <option value="MK">Macedonia, the former Yugoslav Republic of</option>
+                            <option value="MG">Madagascar</option>
+                            <option value="MW">Malawi</option>
+                            <option value="MY">Malaysia</option>
+                            <option value="MV">Maldives</option>
+                            <option value="ML">Mali</option>
+                            <option value="MT">Malta</option>
+                            <option value="MH">Marshall Islands</option>
+                            <option value="MQ">Martinique</option>
+                            <option value="MR">Mauritania</option>
+                            <option value="MU">Mauritius</option>
+                            <option value="YT">Mayotte</option>
+                            <option value="MX">Mexico</option>
+                            <option value="FM">Micronesia, Federated States of</option>
+                            <option value="MD">Moldova, Republic of</option>
+                            <option value="MC">Monaco</option>
+                            <option value="MN">Mongolia</option>
+                            <option value="ME">Montenegro</option>
+                            <option value="MS">Montserrat</option>
+                            <option value="MA">Morocco</option>
+                            <option value="MZ">Mozambique</option>
+                            <option value="MM">Myanmar</option>
+                            <option value="NA">Namibia</option>
+                            <option value="NR">Nauru</option>
+                            <option value="NP">Nepal</option>
+                            <option value="NL">Netherlands</option>
+                            <option value="NC">New Caledonia</option>
+                            <option value="NZ">New Zealand</option>
+                            <option value="NI">Nicaragua</option>
+                            <option value="NE">Niger</option>
+                            <option value="NG">Nigeria</option>
+                            <option value="NU">Niue</option>
+                            <option value="NF">Norfolk Island</option>
+                            <option value="MP">Northern Mariana Islands</option>
+                            <option value="NO">Norway</option>
+                            <option value="OM">Oman</option>
+
+                            <option value="PW">Palau</option>
+                            <option value="PS">Palestinian Territory, Occupied</option>
+                            <option value="PA">Panama</option>
+                            <option value="PG">Papua New Guinea</option>
+                            <option value="PY">Paraguay</option>
+                            <option value="PE">Peru</option>
+                            <option value="PH">Philippines</option>
+                            <option value="PN">Pitcairn</option>
+                            <option value="PL">Poland</option>
+                            <option value="PT">Portugal</option>
+                            <option value="PR">Puerto Rico</option>
+                            <option value="QA">Qatar</option>
+                            <option value="RE">Réunion</option>
+                            <option value="RO">Romania</option>
+                            <option value="RU">Russian Federation</option>
+                            <option value="RW">Rwanda</option>
+                            <option value="BL">Saint Barthélemy</option>
+                            <option value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
+                            <option value="KN">Saint Kitts and Nevis</option>
+                            <option value="LC">Saint Lucia</option>
+                            <option value="MF">Saint Martin (French part)</option>
+                            <option value="PM">Saint Pierre and Miquelon</option>
+                            <option value="VC">Saint Vincent and the Grenadines</option>
+                            <option value="WS">Samoa</option>
+                            <option value="SM">San Marino</option>
+                            <option value="ST">Sao Tome and Principe</option>
+                            <option value="SA">Saudi Arabia</option>
+                            <option value="SN">Senegal</option>
+                            <option value="RS">Serbia</option>
+                            <option value="SC">Seychelles</option>
+                            <option value="SL">Sierra Leone</option>
+                            <option value="SG">Singapore</option>
+                            <option value="SX">Sint Maarten (Dutch part)</option>
+                            <option value="SK">Slovakia</option>
+                            <option value="SI">Slovenia</option>
+                            <option value="SB">Solomon Islands</option>
+                            <option value="SO">Somalia</option>
+                            <option value="ZA">South Africa</option>
+                            <option value="GS">South Georgia and the South Sandwich Islands</option>
+                            <option value="SS">South Sudan</option>
+                            <option value="ES">Spain</option>
+                            <option value="LK">Sri Lanka</option>
+                            <option value="SD">Sudan</option>
+                            <option value="SR">Suriname</option>
+                            <option value="SJ">Svalbard and Jan Mayen</option>
+                            <option value="SZ">Swaziland</option>
+                            <option value="SE">Sweden</option>
+                            <option value="CH">Switzerland</option>
+                            <option value="SY">Syrian Arab Republic</option>
+                            <option value="TW">Taiwan, Province of China</option>
+                            <option value="TJ">Tajikistan</option>
+                            <option value="TZ">Tanzania, United Republic of</option>
+                            <option value="TH">Thailand</option>
+                            <option value="TL">Timor-Leste</option>
+                            <option value="TG">Togo</option>
+                            <option value="TK">Tokelau</option>
+                            <option value="TO">Tonga</option>
+                            <option value="TT">Trinidad and Tobago</option>
+                            <option value="TN">Tunisia</option>
+                            <option value="TR">Turkey</option>
+                            <option value="TM">Turkmenistan</option>
+                            <option value="TC">Turks and Caicos Islands</option>
+                            <option value="TV">Tuvalu</option>
+                            <option value="UG">Uganda</option>
+                            <option value="UA">Ukraine</option>
+                            <option value="AE">United Arab Emirates</option>
+                            <option value="GB">United Kingdom</option>
+                            <option value="US">United States</option>
+                            <option value="UM">United States Minor Outlying Islands</option>
+                            <option value="UY">Uruguay</option>
+                            <option value="UZ">Uzbekistan</option>
+                            <option value="VU">Vanuatu</option>
+                            <option value="VE">Venezuela, Bolivarian Republic of</option>
+                            <option value="VN">Viet Nam</option>
+                            <option value="VG">Virgin Islands, British</option>
+                            <option value="VI">Virgin Islands, U.S.</option>
+                            <option value="WF">Wallis and Futuna</option>
+                            <option value="EH">Western Sahara</option>
+                            <option value="YE">Yemen</option>
+                            <option value="ZM">Zambia</option>
+                            <option value="ZW">Zimbabwe</option>
+                        </select>
+                        <span asp-validation-for="Country" class="text-danger"></span>
+                    </div>
+                    <div class="six wide field">
+                        <input asp-for="cus_phone" placeholder="Phone Number">
+                        <span asp-validation-for="cus_phone" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="six wide field">
+                        <label>Select First preferred medium</label>
+                        <select asp-for="FirstPreferences" class="custom-select mr-sm-2"
+                                asp-items="@(new SelectList(Preferences))">
+                            <option value="">Select</option>
+                        </select>
+
+                        <span asp-validation-for="FirstPreferences" class="text-danger"></span>
+                    </div>
+                    <div class="six wide field">
+                        <label>Select 2ND preferred medium</label>
+                        <select asp-for="SecondPreferences" class="custom-select mr-sm-2"
+                                asp-items="@(new SelectList(Preferences))">
+                            <option value="">Select</option>
+                        </select>
+
+                        <span asp-validation-for="SecondPreferences" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="" style="margin: 2rem;">
+                    <h2>
+                        Time Preferences
+                    </h2>
+                    <p>Please provide preferred time to contact you according to your area. We highly recommend you to provide more than one preferred contact time. This will increase your availability and will expedite the communication procedure.</p>
+                </div>
+                <div class="two fields">
+                    <div class="six wide field">
+                        <label>Select First  Time Preferences</label>
+                        <div class="row">
+                            <div class="col-2">
+
+                                <div class="ui selection dropdown time">
+                                    <select asp-for="FirstPreferedTimeStart" class="menu">
+                                        <option value="">HH:MM</option>
+                                        <option value="00:00:00">00:00</option>
+                                        <option value="01:00:00">01:00</option>
+                                        <option value="02:00:00">02:00</option>
+                                        <option value="03:00:00">03:00</option>
+                                        <option value="04:00:00">04:00</option>
+                                        <option value="05:00:00">05:00</option>
+                                        <option value="06:00:00">06:00</option>
+                                        <option value="07:00:00">07:00</option>
+                                        <option value="08:00:00">08:00</option>
+                                        <option value="09:00:00">09:00</option>
+                                        <option value="10:00:00">10:00</option>
+                                        <option value="11:00:00">11:00</option>
+                                        <option value="12:00:00">12:00</option>
+                                        <option value="13:00:00">13:00</option>
+                                        <option value="14:00:00">14:00</option>
+                                        <option value="15:00:00">15:00</option>
+                                        <option value="16:00:00">16:00</option>
+                                        <option value="17:00:00">17:00</option>
+                                        <option value="18:00:00">18:00</option>
+                                        <option value="19:00:00">19:00</option>
+                                        <option value="20:00:00">20:00</option>
+                                        <option value="21:00:00">21:00</option>
+                                        <option value="22:00:00">22:00</option>
+                                        <option value="23:00:00">23:00</option>
+                                    </select>
+                                </div>
+                                <span asp-validation-for="FirstPreferedTimeStart" class="text-danger"></span>
+                            </div>
+                            <div class="col-2">
+                                <div class="ui selection dropdown time">
+                                    <select asp-for="FirstPreferedTimeEnd" class="menu">
+                                        <option value="">HH:MM</option>
+                                        <option value="00:00:00">00:00</option>
+                                        <option value="01:00:00">01:00</option>
+                                        <option value="02:00:00">02:00</option>
+                                        <option value="03:00:00">03:00</option>
+                                        <option value="04:00:00">04:00</option>
+                                        <option value="05:00:00">05:00</option>
+                                        <option value="06:00:00">06:00</option>
+                                        <option value="07:00:00">07:00</option>
+                                        <option value="08:00:00">08:00</option>
+                                        <option value="09:00:00">09:00</option>
+                                        <option value="10:00:00">10:00</option>
+                                        <option value="11:00:00">11:00</option>
+                                        <option value="12:00:00">12:00</option>
+                                        <option value="13:00:00">13:00</option>
+                                        <option value="14:00:00">14:00</option>
+                                        <option value="15:00:00">15:00</option>
+                                        <option value="16:00:00">16:00</option>
+                                        <option value="17:00:00">17:00</option>
+                                        <option value="18:00:00">18:00</option>
+                                        <option value="19:00:00">19:00</option>
+                                        <option value="20:00:00">20:00</option>
+                                        <option value="21:00:00">21:00</option>
+                                        <option value="22:00:00">22:00</option>
+                                        <option value="23:00:00">23:00</option>
+                                    </select>
+                                </div>
+                                <span asp-validation-for="FirstPreferedTimeEnd" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="six wide field">
+                        <label>Select Second Time Preferences</label>
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="ui selection dropdown time">
+                                    <select asp-for="SecondPreferedTimeStart" class="menu">
+                                        <option value="">HH:MM</option>
+                                        <option value="00:00:00">00:00</option>
+                                        <option value="01:00:00">01:00</option>
+                                        <option value="02:00:00">02:00</option>
+                                        <option value="03:00:00">03:00</option>
+                                        <option value="04:00:00">04:00</option>
+                                        <option value="05:00:00">05:00</option>
+                                        <option value="06:00:00">06:00</option>
+                                        <option value="07:00:00">07:00</option>
+                                        <option value="08:00:00">08:00</option>
+                                        <option value="09:00:00">09:00</option>
+                                        <option value="10:00:00">10:00</option>
+                                        <option value="11:00:00">11:00</option>
+                                        <option value="12:00:00">12:00</option>
+                                        <option value="13:00:00">13:00</option>
+                                        <option value="14:00:00">14:00</option>
+                                        <option value="15:00:00">15:00</option>
+                                        <option value="16:00:00">16:00</option>
+                                        <option value="17:00:00">17:00</option>
+                                        <option value="18:00:00">18:00</option>
+                                        <option value="19:00:00">19:00</option>
+                                        <option value="20:00:00">20:00</option>
+                                        <option value="21:00:00">21:00</option>
+                                        <option value="22:00:00">22:00</option>
+                                        <option value="23:00:00">23:00</option>
+                                    </select>
+                                </div>
+                                <span asp-validation-for="SecondPreferedTimeStart" class="text-danger"></span>
+                            </div>
+                            <div class="col-2">
+                                <div class="ui selection dropdown time">
+                                    <select asp-for="SecondPreferedTimeEnd" class="menu">
+                                        <option value="">HH:MM</option>
+                                        <option value="00:00:00">00:00</option>
+                                        <option value="01:00:00">01:00</option>
+                                        <option value="02:00:00">02:00</option>
+                                        <option value="03:00:00">03:00</option>
+                                        <option value="04:00:00">04:00</option>
+                                        <option value="05:00:00">05:00</option>
+                                        <option value="06:00:00">06:00</option>
+                                        <option value="07:00:00">07:00</option>
+                                        <option value="08:00:00">08:00</option>
+                                        <option value="09:00:00">09:00</option>
+                                        <option value="10:00:00">10:00</option>
+                                        <option value="11:00:00">11:00</option>
+                                        <option value="12:00:00">12:00</option>
+                                        <option value="13:00:00">13:00</option>
+                                        <option value="14:00:00">14:00</option>
+                                        <option value="15:00:00">15:00</option>
+                                        <option value="16:00:00">16:00</option>
+                                        <option value="17:00:00">17:00</option>
+                                        <option value="18:00:00">18:00</option>
+                                        <option value="19:00:00">19:00</option>
+                                        <option value="20:00:00">20:00</option>
+                                        <option value="21:00:00">21:00</option>
+                                        <option value="22:00:00">22:00</option>
+                                        <option value="23:00:00">23:00</option>
+                                    </select>
+                                </div>
+                                <span asp-validation-for="SecondPreferedTimeEnd" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Message" class="control-label "></label>
+                    <textarea asp-for="Message" class="form-control"> </textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+
+                <input type="button" onclick="PageNext(this.parentElement.parentElement)" class="ui primary submit button" value="SAVE & CONTINUE" />
+            </div>
+
+        </div>
+        <div id="page_2" style="display:none">
+            <div>
+                <h1 id="heading">Choose a Package!</h1>
+            </div>
+            <div class="buttons">
+                @foreach (var services in Model.ServicesPackages)
+                {
+                    <a href="#service_@services.Ser_Id"><div class="logo-p"><h2>@services.Ser_Name</h2></div></a>
+                }
+            </div>
+
+            <!-- packages -->
+            @for (int i = 0; i < Model.ServicesPackages.Count; i++)
+            {
+
+                <div class="packages" id="service_@Model.ServicesPackages[i].Ser_Id">
+                    <h1 id="custom-website-design">
+                        @Model.ServicesPackages[i].Ser_Name
+                    </h1>
+                    <div class="packs-content">
+
+                        @for (int j = 0; j < Model.ServicesPackages[i].Packages.Count(); j++)
+                        {
+
+                            <div class="pack1">
+                                <div class="pack-price">
+                                    <div>
+                                        <input type="number" id="id$@Model.ServicesPackages[i].Packages[j].id" value="@Model.ServicesPackages[i].Packages[j].id" hidden />
+                                        <input  type="text" id="PkgName$@Model.ServicesPackages[i].Packages[j].id" value="@Model.ServicesPackages[i].Packages[j].PkgName" hidden />
+                                        <input  type="number" id ="Ser_Id$@Model.ServicesPackages[i].Packages[j].id" value="@Model.ServicesPackages[i].Packages[j].Ser_Id" hidden />
+                                        <input  type="text" id="Ser_Name$@Model.ServicesPackages[i].Packages[j].id" value="@Model.ServicesPackages[i].Packages[j].Ser_Name" hidden />
+                              
+                                     
+                                        <h1>@Model.ServicesPackages[i].Packages[j].PkgName</h1>
+                                        <p>@Model.ServicesPackages[i].Packages[j].Ser_Name PACKAGE</p>
+                                    </div>
+                                    <p>$@Model.ServicesPackages[i].Packages[j].TotalPrice</p>
+                                    <input  type="number" id="TotalPrice$@Model.ServicesPackages[i].Packages[j].id" value="@Model.ServicesPackages[i].Packages[j].TotalPrice" hidden />
+                                </div>
+                                <div class="pack-features">
+                                    <div class=""></div>
+                                    @foreach (var features in Model.ServicesPackages[i].Packages[j].Description)
+                                    {
+                                        <h2>@features</h2>
+                                    }
+                                </div>
+                                <div class="pack-order">
+                                    <div class="row-1">
+                                        @{
+                                            double discount = (Model.ServicesPackages[i].Packages[j].DiscountPercent / 100 * Model.ServicesPackages[i].Packages[j].TotalPrice);
+                                            double PriceAfterDiscount = Model.ServicesPackages[i].Packages[j].TotalPrice - discount;
+
+                                        }
+                                        <p>SPECIAL DISCOUNT</p>
+                                        <P>-$@discount</P>
+                                    </div>
+                                    <div class="row-2">
+                                        <p>FINAL PRICE FOR LIMITED TIME</p>
+                                    </div>
+                                    <div class="row-3">
+                                        <a asp-controller="Packages" asp-action="Detail" asp-route-id="@Model.ServicesPackages[i].Packages[j].id" target="_blank">view details</a>
+                                        <h1>$@PriceAfterDiscount</h1>
+                                        <input  type="number" id="DiscountPercent$@Model.ServicesPackages[i].Packages[j].id" value="@Model.ServicesPackages[i].Packages[j].DiscountPercent" hidden />
+                                       
+                                    </div>
+                                    <div class="row-4">
+                                        <h4>Add To Buying List</h4>
+                                        <div class="input-group mb-3 order-btn-pack">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <input  type="checkbox" id="is_selected$@Model.ServicesPackages[i].Packages[j].id" checked="@Model.ServicesPackages[i].Packages[j].is_selected">
+                                                </div>
+                                            </div>
+                                            <input  type="number" id="Quantity$@Model.ServicesPackages[i].Packages[j].id"  value="@Model.ServicesPackages[i].Packages[j].Quantity"  min="1" class="form-control">
+                                        </div>
+
+                                    </div>
+                                    <div class="row-5">
+                                        <p>Discuss this offer with expert</p>
+                                        <div class="discuss">
+                                            <p>12345467889</p>
+                                            <p id="chat-btn_10">Live Chat</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            }
+            <input asp-for="HoldPackage" hidden/>
+            <div>
+                <button type="button" class="btn btn-danger px-2 btn-lg" onclick="PageBack(this.parentElement.parentElement)">Back</button>
+                <button type="button" class="btn btn-danger px-2 btn-lg" id="summary">Summary!</button>
+            </div>
+        </div>
+        <div class="order-summary" id="page_3">
+
+
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <link rel="stylesheet" href="~/css/signup.css">
+    <script>
+        $(document).ready(function () {
+            $("#summary").click(function () {
+                const packag = [];
+                $('.pack1').each(function (i, pack) {
+                    const obj = {};
+                    const inp = $(this).find(':input');
+                    let c = inp.filter('[id^="is_selected"]:checked');
+                    obj['id'] = inp.filter('[id^="id"]').val();
+                    obj['PkgName'] = inp.filter('[id^="PkgName"]').val();
+                    obj['Ser_Id'] = inp.filter('[id^="Ser_Id"]').val();
+                    obj['Ser_Name'] = inp.filter('[id^="Ser_Name"]').val();
+                    obj['TotalPrice'] = inp.filter('[id^="TotalPrice"]').val();
+                    obj['DiscountPercent'] = inp.filter('[id^="DiscountPercent"]').val();
+                    obj['is_selected'] = c.length != 0 ? true : false;
+                    obj['Quantity'] = inp.filter('[id^="Quantity"]').val();
+                    packag.push(obj);
+                });
+                //const model = {
+                //    cus_name: $('#cus_name').val(),
+                //    Country: $('#Country').val(),
+                //    cus_phone: $('#cus_phone').val(),
+                //    Email: $('#Email').val(),
+                //    FirstPreferences: $('#FirstPreferences').val(),
+                //    SecondPreferences: $('#SecondPreferences').val(),
+                //    FirstPreferedTimeStart: $('#FirstPreferedTimeStart').val(),
+                //    FirstPreferedTimeEnd: $('#FirstPreferedTimeEnd').val(),
+                //    SecondPreferedTimeStart: $('#SecondPreferedTimeStart').val(),
+                //    SecondPreferedTimeEnd: $('#SecondPreferedTimeEnd').val(),
+                //    Message: $('#Message').val(),
+                //};
+
+                $("#HoldPackage").val(JSON.stringify(packag));
+                $.ajax({
+                    type: "post",
+                    url: "/Order/ShowSummary",
+                    cache: false,
+                    data: $("form").serialize(),
+                }).done(function (data) {
+                    $('#page_2').hide();
+                    $('#page_3').show();
+                    $('#page_3').html(data);
+                }).catch(function () {
+                    console.log("Done")
+                });
+
+            })
+           
+        });
+
+        function PageNext(ele) {
+            const id = ele.getAttribute('id').split("_")[1];
+            const next = parseInt(id) + 1;
+            $("#col_" + id).removeClass('on');
+            $("#col_" + next).addClass('on');
+            $("#page_" + id).hide();
+            $("#page_" + next).show();
+        }
+        function PageBack(ele) {
+            const id = ele.getAttribute('id').split("_")[1];
+            const previous = parseInt(id) - 1;
+            $("#col_" + id).removeClass('on');
+            $("#col_" + previous).addClass('on');
+            $("#page_" + id).hide();
+            $("#page_" + previous).show();
+        }
+    </script>
+}

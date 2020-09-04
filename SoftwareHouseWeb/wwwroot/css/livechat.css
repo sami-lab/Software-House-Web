@@ -1,0 +1,34 @@
+/* chatbox */
+.chat-box{
+    width: 35rem;
+    height: 5.5rem;
+    border-radius: 2rem;
+    position: absolute;
+    position: fixed;
+    bottom: -3%;
+    z-index: 999;
+    right: 3%;
+    color: white;
+    display: grid;
+    /* justify-content: center; */
+    grid-template-rows: 20fr 80fr;
+    grid-template-areas: "btn" "chatbox";
+    background: rgb(28, 88, 112);
+
+}
+#chat-btn{
+    grid-area: btn;
+    padding-top: 2%;
+    cursor: pointer;
+    /* padding-left: 40%; */
+    text-align: center;
+    padding-bottom: 1rem;
+
+}
+.messagebox{
+    grid-area: chatbox;
+    background: lightcyan;
+}
+
+
+

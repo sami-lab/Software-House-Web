@@ -1,0 +1,191 @@
+﻿@model IEnumerable<SoftwareHouseWeb.ViewModel.OrderViewModel.OrderViewModel>
+
+@using SoftwareHouseWeb.ViewModel.OrderViewModel
+@{
+    ViewData["Title"] = "Orders";
+}
+
+
+<div class="container-fluid">
+    <div>
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-success">
+                <strong>@TempData["Message"]</strong>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        @if (Model.All(x => x.OrderStatus == SoftwareHouseWeb.Data.Models.Orders.OrderStatus.Completed))
+                        {
+                            <h4>Completed Projects</h4>
+                        }
+                        else if (Model.All(x => x.OrderStatus == SoftwareHouseWeb.Data.Models.Orders.OrderStatus.Pending))
+                        {
+                            <h4>Pending Projects</h4>
+                        }
+                        else if (Model.All(x => x.OrderStatus == SoftwareHouseWeb.Data.Models.Orders.OrderStatus.Processing))
+                        {
+                            <h4>Projects In Process</h4>
+                        }
+                        else if (Model.All(x => x.OrderStatus == SoftwareHouseWeb.Data.Models.Orders.OrderStatus.Rejected))
+                        {
+                            <h4>Rejected Orders</h4>
+                        }
+                        else if (Model.All(x => x.OrderStatus == SoftwareHouseWeb.Data.Models.Orders.OrderStatus.Cancelled))
+                        {
+                            <h4>Cancelled Projects</h4>
+                        }
+                        else
+                        {
+                            <h4>Projects</h4>
+                        }
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Description</th>
+                                    <th>Client Info</th>
+                                    <th>Cost</th>
+                                    @if (Model.All(x => (int)x.OrderStatus >= 3))
+                                    {
+                                        <th>Date of Start</th>
+                                        <th>Date of Completion</th>
+                                        <th>Team members</th>
+                                    }
+                                    <th>Actions</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    var i = 1;
+                                }
+                                @foreach (var order in Model)
+                                {
+                                    <tr>
+                                        <th>@i</th>
+                                        <td class="desi">
+                                            <ul>
+                                                @foreach (var p in order.OrderPackages)
+                                                {
+                                                    <li>@p.Quantity @p.PkgName</li>
+                                                }
+
+                                            </ul>
+                                        </td>
+
+
+                                        <td>
+                                            Name : @order.cus_name
+                                            <br>
+                                            Email : @order.Email
+                                            <br>
+                                            Phone : @order.cus_phone
+                                            <br>
+                                            Country : @order.Country
+                                        </td>
+                                        <td class="color-primary">$@order.TotalAmount</td>
+                                        @if (Model.All(x => (int)x.OrderStatus >= 3))
+                                        {
+                                            <td>@order.StartDate.ToString("yyyy-MM-dd")</td>
+                                            <td>@order.EndDate.ToString("yyyy-MM-dd")</td>
+                                            <td>
+                                                <ul>
+                                                    @foreach (var member in order.OrderTeam)
+                                                    {
+                                                        <li>@member.EmployeeName (@member.Position)</li>
+                                                    }
+
+                                                </ul>
+                                            </td>
+                                        }
+                                        @if (order.OrderStatus == SoftwareHouseWeb.Data.Models.Orders.OrderStatus.Cancelled || order.OrderStatus == SoftwareHouseWeb.Data.Models.Orders.OrderStatus.Rejected)
+                                        {
+                                            <td>
+                                                @await Html.PartialAsync("~/Views/Shared/Modal.cshtml", order.order_id)
+                                            </td>
+                                        }
+                                        else if (order.OrderStatus == SoftwareHouseWeb.Data.Models.Orders.OrderStatus.Processing)
+                                        {
+                                            <td>
+                                                @await Html.PartialAsync("~/Views/Order/UpdateStatus.cshtml", new UpdateOrderStatus() { order_id = order.order_id, orderStatus = order.OrderStatus })
+                                                <button id="Team_@order.order_id" class="btn btn-primary">Manage Team</button>
+                                            </td>
+                                        }
+                                        else if (order.OrderStatus == SoftwareHouseWeb.Data.Models.Orders.OrderStatus.Pending)
+                                        {
+                                            <td>
+                                                <button id="Team_@order.order_id" class="btn btn-primary">Manage Team</button>
+                                            </td>
+                                        }
+
+                                        <td><a class="btn btn-danger" asp-controller="Order" asp-action="Detail" asp-route-id="@order.order_id">Details</a></td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="partial">
+
+</div>
+
+@section Scripts{
+    <!-- row -->
+    <style>
+        table {
+            min-width: 1400px !important;
+            width: min-content;
+            overflow-x: scroll;
+        }
+
+            table .desi {
+                width: 400px;
+            }
+
+            table li {
+                margin: 1rem;
+            }
+    </style>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("[id ^='Team_']").click(function () {
+                const order_id = $(this).attr('id').split('_')[1];
+                $.ajax({
+                    type: "GET",
+                    url: "/Order/ManageTeam",
+                    data: {
+                        order_id: order_id
+                    },
+                    success: function (data) {
+                        $('#partial').html(data);
+                        $("#myModel_" + order_id).modal('show');
+                    },
+                    failure: function (response) {
+                        console.log(response.responseText);
+                    },
+                    error: function (response) {
+                        console.log(response.responseText);
+                    }
+                });
+            
+
+            });
+         });
+    </script>
+}

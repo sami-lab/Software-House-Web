@@ -1,0 +1,91 @@
+﻿@model IEnumerable<SoftwareHouseWeb.ViewModel.OrderViewModel.OrderViewModel>
+
+@{
+    ViewData["Title"] = "Orders";
+}
+
+
+<div class="container-fluid">
+    <div>
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-success">
+                <strong>@TempData["Message"]</strong>
+            </div>
+        }
+    </div>
+    <div class="row">
+
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h4>Table Basic</h4>
+                    </div>
+                    <div class="table-responsive">
+
+                        <table class="table">
+                            @{ var i = 0;}
+                            @foreach (var order in Model)
+                            {
+                                i++;
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Client Name</th>
+                                        <th>Email</th>
+                                        <th>Country</th>
+                                        <th style="width: 300px;">Project Description</th>
+                                        <th>Total Price</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>@i</th>
+                                        <td>@order.cus_name</td>
+                                        <td>
+                                            @order.Email
+                                        </td>
+                                        <td>@order.Country</td>
+                                        <td>
+                                            <ul>
+                                                @foreach (var package in order.OrderPackages)
+                                                {
+                                                    <li>@package.PkgName</li>
+                                                }
+
+                                            </ul>
+                                        </td>
+                                        <td>@order.TotalAmount</td>
+                                        <td>
+                                            <p class="text-danger">@order.PaymentStatus</p>
+                                        </td>
+                                        <td>@order.Date</td>
+
+                                    </tr>
+
+
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+@section Scripts{
+    <style>
+        table {
+            width: 1400px !important;
+            overflow-x: scroll;
+        }
+    </style>
+}

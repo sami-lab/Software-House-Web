@@ -1,0 +1,62 @@
+﻿@model IEnumerable<SoftwareHouseWeb.ViewModel.OrderViewModel.OrderViewModel>
+
+@{
+    ViewData["Title"] = "UserUnpaidOrder";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="main">
+    <div class="bread-crumb">
+        <a asp-controller="Account" asp-action="Profile">@User.Identity.Name Account </a> >> Pending Orders
+    </div>
+    <div class="headings">
+        <h1>Orders Awaiting Payment</h1>
+        <p>You have some incomplete orders which you can resume by completing their payment process. As soon as we receive the order payment, we will process them and deliver before your deadline. Please provide the information in any of the search fields below and click on 'search' button to view the orders that are awaiting payment.</p>
+    </div>
+    <div class="table">
+        <div class="head">
+            <h1>Order ID</h1>
+            <h1>Name</h1>
+            <h1>Order Date</h1>
+            <h1>Amount</h1>
+            <h1>Order Status</h1>
+            <h1>Actions</h1>
+        </div>
+        <div class="td-rows">
+            @foreach (var order in Model)
+            {
+                <div class="row">
+                    <p>
+                        Order @order.order_id
+                    </p>
+                    <p>
+                        @{
+                            string pacakges = "";
+                        }
+                        @foreach (var p in order.OrderPackages)
+                        {
+                            pacakges = p.Quantity + " " + p.PkgName + "\n";
+                        }
+                        @pacakges
+                    </p>
+                    <p>
+                        @order.Date
+                    </p>
+                    <p>
+                        $@order.TotalAmount
+                    </p>
+                    <p>
+                        @order.OrderStatus
+                    </p>
+                    <a asp-controller="Order" asp-action="ChargeAmount" asp-route-order_id="@order.order_id">Pay Now</a>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <link rel="stylesheet" href="~/css/unpaid.css">
+}

@@ -1,0 +1,51 @@
+﻿@model SoftwareHouseWeb.ViewModel.Portfolio.PortfolioViewModel
+
+<div class="bootstrap-modal">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicModal_@Model.Ser_Id">Add New</button>
+    <!-- Modal -->
+    <div class="modal fade" id="basicModal_@Model.Ser_Id">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Portfolio</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+                    <div class="col-12">
+                        <form method="post" asp-controller="Portfolio" asp-action="Create" enctype="multipart/form-data">
+
+                            <div class="form-group">
+                                <input asp-for="Ser_Id" hidden />
+                                <input asp-for="Heading" class="form-control input-rounded" required placeholder="Add Title">
+                                <span asp-validation-for="Heading" class="text-danger col-12"></span>
+                                <input asp-for="Desc" class="form-control input-rounded" required placeholder="Add Description(Optional)">
+                                <span asp-validation-for="Desc" class="text-danger col-12"></span>
+                                @if (ViewBag.Services != null)
+                                {
+                                    <div class="form-group">
+                                        <label>Type</label>
+                                        <select asp-for="Ser_Id"  class="form-control"
+                                                asp-items="@(new SelectList(ViewBag.Services, "id", "ServiceName"))">
+                                            <option selected="selected">Choose...</option>
+
+                                        </select>
+                                        <span asp-validation-for="Ser_Id" class="text-danger"></span>
+                                    </div>
+                                }
+                                <h2>Add New Logo</h2>
+                                <input asp-for="Photo" class="form-control input-rounded mt-3" placeholder="">
+                                <span asp-validation-for="Photo" class="text-danger col-12"></span>
+                                <button type="submit" class="btn btn-primary mt-3 ">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

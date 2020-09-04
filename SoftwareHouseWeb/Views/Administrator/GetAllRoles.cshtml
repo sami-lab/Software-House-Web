@@ -1,0 +1,66 @@
+﻿@model IEnumerable<IdentityRole>
+@using Microsoft.AspNetCore.Authorization
+@using SoftwareHouseWeb.Data
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    ViewBag.Title = "All Roles";
+}
+
+<h1>All Roles</h1>
+
+@if (Model.Any())
+{
+    if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+    {
+        <a class="btn btn-primary mb-3" style="width:auto" asp-action="CreateRole"
+           asp-controller="administrator">Add new role</a>
+    }
+
+    foreach (var role in Model)
+    {
+        <h1>Role Id : @role.Id</h1>
+        <h1>@role.Name</h1>
+        <div class="card mb-3">
+            <div class="card-header">
+                Role Id : @role.Id
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@role.Name</h5>
+            </div>
+            <div class="card-footer d-flex justify-content-start">
+                <a asp-controller="Administrator" asp-action="EditRole"
+                   asp-route-id="@role.Id" class="btn btn-primary m-1">
+                    Edit
+                </a>
+                <a class="btn btn-primary m-1" asp-controller="Administrator" asp-action="EditUsersInRole" asp-route-roleId="@role.Id">Edit Users in Role</a>
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    @await Html.PartialAsync("~/Views/Shared/Modal.cshtml", role.Id)
+                }
+
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No roles created yet
+        </div>
+        @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+        {
+            <div class="card-body">
+                <h5 class="card-title">
+                    Use the button below to create a role
+                </h5>
+                <a class="btn btn-primary" style="width:auto"
+                   asp-controller="administrator" asp-action="CreateRole">
+                    Create Role
+                </a>
+            </div>
+        }
+    </div>
+}
+

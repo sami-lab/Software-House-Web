@@ -1,0 +1,210 @@
+@import url("nav.css");
+@import url("slider.css");
+@import url("sticky-navbar.css");
+@import url("footer.css");
+@import url("testimonials.css");
+@import url("packages.css");
+@import url("livechat.css");
+@import url("media.css");
+:root{
+    --font-stylish:'Pacifico', cursive;
+    /* --font-primary:'Farro', sans-serif; */
+	--font-head:'Montserrat', sans-serif;
+	--color-primary:rgb(124, 60, 197);
+}
+
+
+/* nav */
+nav , .nav-item-expand , .nav-item-expand-sticky , .sticky-navbar,.mobile-menu,.mobile-nav{
+    background: rgb(124, 60, 197);
+
+}
+
+
+
+/* header */
+header{
+	height: 45vw;
+
+	background:linear-gradient(rgba(44, 104, 214, 0.37),rgba(19, 156, 197, 0.349)) ,url("../img/webdesign-header.jpg");
+    background-size: 100% 200% , cover;
+    background-attachment: fixed;
+display: flex;
+align-items: center;
+justify-content: center;
+
+
+}
+.text-content{
+    
+transform: translateX(-20rem);
+color: white;
+flex-flow: column;
+}
+.text-content h1{
+    font-size: 3.5rem;
+}
+.text-content h2{
+    font-size: 2rem;
+}
+.text-content > *{
+    /* margin-top: 1rem; */
+}
+.text-content p{
+    font-size: 1.6rem;
+}
+.text-content ul{
+    /* margin-top: 4rem; */
+    font-size: 1.6rem;
+    margin-left: 15%;
+}
+.text-content ul li{
+    list-style: none;
+}
+.text-content ul li::before{
+    content:'';
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    background: url('../img/tick.svg');
+    background-repeat: no-repeat;
+    transform: translate(-3rem,0.3rem);
+    
+}
+.text-content > * {
+    padding: 1rem 0;
+}
+
+.all-items{
+	display: grid
+	;
+	grid-template-columns: minmax(5rem,1fr) minmax(min-content,112rem) minmax(5rem,1fr);
+	grid-template-areas: ". main .";
+	justify-content: center;
+	
+}
+.container{
+	grid-area: main;
+	display: grid;
+	grid-template-columns: repeat(auto-fit,25rem);
+	
+}
+.all-items * img{
+width: 25rem;
+height: 30rem;
+}
+.recent-work{
+    margin-top: 5rem;
+    display: grid;
+    grid-template-rows: 10rem minmax(60rem,1fr) 10rem;
+    grid-template-columns: minmax(5rem,1fr) minmax(22rem,110rem) minmax(5rem,1fr);
+    grid-template-areas: ". h ."
+                            ". works ."
+                            ". twobtn ."
+}
+.recent-work h1:nth-child(1){
+grid-area: h;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 3rem;
+}
+.works{
+    grid-area: works;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,20rem);
+
+    grid-gap: 9rem;
+    justify-content: center;
+}
+.same{
+    width: 25rem;
+    height: 50rem;
+   position: relative;
+
+}
+.works div{
+    overflow: hidden;
+}
+.same  img{
+    width: 25rem;
+    height: 100%;
+    transition: all 500ms ease;
+
+}
+
+.same:hover img {
+transform: scale(1.2);
+cursor: pointer;
+
+}
+
+button {
+    background-color: var(--green) !important;
+    transition: background 300ms ease;
+}
+.two-btn{
+    grid-area: twobtn;
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+.two-btn button{
+    font-family: var(--raleway) !important;
+    /* width: 20rem !important; */
+    padding: 1rem 3rem;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+.two-btn button:focus{
+    outline: none;
+}
+ button:hover{
+    background: var(--dark-green) !important;
+}
+@media only screen and (max-width:560px){
+    .text-content{
+        transform: translateX(0);
+    }
+}
+@media only screen and (max-width:425px){
+header{
+height: 70rem;
+}
+.text-content h1{
+    font-size: 3.5rem;
+    text-align: center;
+    
+}
+.text-content h2{
+    font-size: 2rem;
+    text-align: center;
+}
+.text-content > *{
+    /* margin-top: 1rem; */
+}
+.text-content p{
+    font-size: 1.6rem;
+    text-align: center;
+}
+.text-content ul{
+    /* margin-top: 4rem; */
+    font-size: 1.6rem;
+    margin-left: 15%;
+}
+.text-content ul li{
+    font-size: 12px;
+}
+.text-content ul li::before{
+    content:'';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: url('../img/tick.svg');
+    background-repeat: no-repeat;
+    transform: translate(-3rem,0rem);
+    
+}
+}

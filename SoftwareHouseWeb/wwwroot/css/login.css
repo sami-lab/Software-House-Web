@@ -1,0 +1,96 @@
+.container{
+    height: 100vh;
+    display: grid;
+    grid-template-rows:5rem 80fr 5rem 20fr;
+    grid-template-columns: 10fr 80fr 10fr ;
+    grid-template-areas: ". . ."
+                        ". main ."
+                        ". . ."
+                        "foot foot foot";
+    font-family: var(--raleway);
+}
+.main
+{
+    grid-area: main;
+    background: rgba(226, 226, 226, 0.342);
+    display: grid;
+    grid-template-rows: 20fr 80fr;
+}
+.heading{
+    display: flex;
+justify-content: flex-end;
+align-items: center;
+flex-flow: column;
+}
+.heading h1{
+    font-size: 5rem;
+    letter-spacing: 4px;
+    color: rgba(0, 0, 0, 0.603);
+}
+.line{
+    background: rgb(6, 141, 107);
+    width: 50px;
+    height:3px ;
+    margin-top: 10px;
+}
+form{
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+ 
+}
+input{
+    height: 50px;
+    width: 40%;
+    border: 1px solid rgba(0, 0, 0, 0.212);
+    border-radius: 5px;
+    padding: 5px 30px;
+    font-size: 16px;
+    font-family: var(--raleway);
+    min-width: 200px;
+}
+input:focus{
+    outline: none;
+}
+form > *{
+    margin-left: 30%;
+    margin-bottom: 15px;
+}
+label{
+    font-size: 16px;
+    
+}
+button{
+    width: 100px;
+    height: 50px;
+    background: rgb(6, 141, 107);
+    color: white;
+    font-family: var(--raleway);
+    cursor: pointer;
+    transition: background 300ms ease;
+}
+button:hover{
+    background: rgba(6, 141, 107, 0.705);
+}
+button:focus{
+    outline: none;
+}
+.foot{
+    grid-area: foot;
+    background: rgba(43, 43, 43, 0.801);
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+.foot > a{
+    padding: 0 2rem;
+    font-size: 10px;
+}
+.foot a:nth-child(2){
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+a:hover{
+    text-decoration: underline;
+}

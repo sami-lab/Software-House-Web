@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/nav.css">
+    <link rel="stylesheet" href="~/css/sticky-navbar.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Farro&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <environment include="Development">
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+        </script>
+    </environment>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+</head>
+<body>
+    <div class="sticky-navbar">
+        <div>
+            <h2>Logo</h2>
+        </div>
+        <div class="sticky-items" id="sticky">
+            @*<h3 id="logo2"><a asp-controller="Home" asp-action="Logo">Logo Design </a></h3>
+            <h3 id="webdesign2">
+                <a asp-controller="Home" asp-action="WebDesign">Website Design </a>
+            </h3>
+            <h3 id="webdev2"><a asp-controller="Home" asp-action="WebDev">Website Development</a></h3>*@
+        </div>
+        <div class="sticky-threebtn">
+            <img id="sticky-avatar" src="~/Image/Dev/man.svg" alt="" />
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a asp-controller="Account" asp-action="Logout"><h2>Logout</h2></a>
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="Login"><h2>Login / SignUp</h2></a>
+            }
+        </div>
+    </div>
+    <div class="nav-item-expand-sticky">
+        <div class="portfolio">
+            <!--  -->
+            <img src="~/Image/Dev/portfolio-icon.png" alt="">
+            <h2>Portfolio</h2>
+        </div>
+        <div class="our-packages">
+            <img src="~/Image/Dev/package-icon.png" alt="">
+            <h2>Our Packages</h2>
+        </div>
+        <div class="how-it-works">
+            <img src="~/Image/Dev/setting-icon.png" alt="">
+            <h2>How It Works</h2>
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="main">
+            @RenderBody()
+            @RenderSection("Scripts", false)
+
+        </div>
+        <div class="foot">
+            <a asp-controller="Home" asp-action="Index"> <h3>HOME</h3></a>
+            <a asp-controller="Home" asp-action="Contact"><H3>CONTACT US</H3></a>
+            <a asp-controller="Home" asp-action="Privacy"><H3>PRIVACY POLICY</H3></a>
+        </div>
+    </div>
+
+</body>
+</html>

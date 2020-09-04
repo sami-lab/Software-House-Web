@@ -1,0 +1,268 @@
+﻿@model SoftwareHouseWeb.ViewModel.Home.CombineData
+@{
+    ViewData["Title"] = "Logo";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container1">
+    <div class="text-content">
+        <h2>
+            More Than 1Million Clients have
+        </h2>
+        <h1>CHOSEN US GLOBALLY!<br> YOU SHOULD TOO.</h1>
+
+        <p>
+            Your logo is your company’s signature and the identity of your brand
+        </p>
+        <p>Best Custom Logo & Web Company</p>
+        <ul>
+
+            <li>More then 12 years Experience</li>
+            <li>Clients across 45 Countries</li>
+            <li>100% Money Back Guarantee</li>
+            <li>Industry specific designers</li>
+        </ul>
+    </div>
+    <form class="ui form">
+
+        <h1>100% Money Back Guarantee</h1>
+        <h1> GET 20% DISCOUNT</h1>
+        <div class="field">
+            <label>Name</label>
+            <input required type="text" name="name" placeholder="Name">
+        </div>
+        <div class="field">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="field">
+            <label>Number</label>
+            <input type="tel" name="phone" placeholder="Number" required>
+        </div>
+        <div class="field">
+            <label>Select Service</label>
+            <select name="id" class="ui dropdown" asp-items="@(new SelectList(ViewBag.Services, "id", "ServiceName"))"></select>
+        </div>
+        <div class="field">
+            <label>Message</label>
+            <textarea id="msg-area" name="message"></textarea>
+        </div>
+
+        <button class="ui button  primary " type="submit">Submit</button>
+    </form>
+</div>
+<!-- slider -->
+
+<div class="slider">
+    <div class="million">
+        <h1>MILLION+ CLIENTS</h1>
+        <h1>14000000+</h1>
+        <h1>Logo & Web Projects</h1>
+        <h2 id="order-btn"><a asp-controller="Order" asp-action="Create" asp-route-Ser_Id="@Model.Services.id"> ORDER NOW</a></h2>
+    </div>
+    <div class="mainer">
+        <div class="guarantee-etc slider-setting">
+            <div class="item-1">
+                <img src="~/Image/Dev/guarantee.svg" asp-append-version="true" alt="" />
+                <h2>100% Money back Guarantee</h2>
+            </div>
+            <div class="item-2">
+                <img src="~/Image/Dev/satisfied.svg" asp-append-version="true" alt="" />
+                <h2>100% Satisfaction</h2>
+            </div>
+            <div class="item-3">
+                <img src="~/Image/Dev/support.svg" asp-append-version="true" alt="" />
+                <h2>24/7 Customer Support</h2>
+            </div>
+            <div class="item-4">
+                <img src="~/Image/Dev/revisions.svg" alt="" />
+                <h2>Unlimited Revisions</h2>
+            </div>
+            <div class="item-5">
+                <img src="~/Image/Dev/custom.svg" alt="" />
+                <h2>100% Custom Design</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- about us -->
+<section id='about-us'>
+    <h1>
+        Shape a Strong Brand Identity That Connects With Your Audience!
+    </h1>
+    <p>
+        With more than a decade of experience under our belt, we shape your brand for the needs of today and vision of tomorrow. We blend brilliant design, creative strategies, innovative mindset and technology skills to create a brand identity that transcends the product and promises an experience. Whether you are looking to develop your startup, reposition an existing business or want to redefine your brand identity; we are the best people for the job. Our approach is simple; we work on every aspect of your brand to ensure that it effectively reflects and communicates your goals, achievements, and your product story.
+
+        Our approach is rather simple, we want to instill the notion of your identity being the differentiating edge when a potential customer looks at you in relevance with the competition. Starting off with a unique yet memorable custom logo design created by our expert logo makers. Then we step up to an impressive website design empowered with excellent website development services. We can also integrate ecommerce web design functionalities if you want to give your customers a shopping experience. Alternatively a distinguishing factor for modern websites are banner designs that complement the overall identity that you want to convey to the end customer.
+
+        To complete the transition from an entry level identity to a discerned personality your business needs something that the customer can take with them, something tangible. That’s where our top-notch stationery designs come to your rescue. Our team of highly creative designers provide you with innovative business cards, letterheads and brochure designs which you can handover to your customers. With Pixels Logo Design, your business and your brand are set for an exciting roller-coaster ride.
+    </p>
+</section>
+
+<!-- packages -->
+<div class="packages">
+    <h1 id="custom-website-design">
+        Custom Website and Logo Design Packages at Affordable Prices!
+    </h1>
+    <div class="packs-content">
+        @foreach (var package in Model.Packages)
+        {
+            var discountPrice = (package.DiscountPercent / 100) * package.TotalPrice;
+
+            <div class="pack1">
+                <div class="pack-price">
+                    <div>
+                        <h1>@package.PkgName</h1>
+                        <p>@package.Ser_Name PACKAGE</p>
+                    </div>
+                    <p>$@package.TotalPrice</p>
+                </div>
+                <div class="pack-features">
+                    <div class=""></div>
+                    @foreach (var desc in package.Description)
+                    {
+                        <h2>@desc</h2>
+                    }
+
+                </div>
+                <div class="pack-order">
+                    <div class="row-1">
+                        <p>SPECIAL DISCOUNT</p>
+                        <P>-$@discountPrice</P>
+                    </div>
+
+                    <div class="row-3">
+                        <p>FINAL PRICE FOR LIMITED TIME</p>
+                        @{ var priceDiff = package.TotalPrice - discountPrice; }
+                        <h1>$@priceDiff</h1>
+
+                    </div>
+
+                    <div class="row-4">
+                        <a class="ui button yellow" asp-controller="Order" asp-action="Create" asp-route-Ser_Id="@package.Ser_Id" asp-route-Pkg_id="@package.id">ORDER NOW </a>
+                    </div>
+                    <div class="row-5">
+                        <p>Discuss this offer with expert</p>
+                        <div class="discuss">
+                            <p>12345467889</p>
+                            <p id="chat-btn_3">Live Chat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    
+</div>
+<div class="two-btn"  style="display:flex; justify-content:center;">
+    @foreach (var service in ViewBag.Services)
+    {
+        var iconPath = "~/Image/Services/" + service.IconPath;
+        <a asp-controller="Packages" asp-action="ServicePackages" asp-route-Ser_Id="@service.id"  class="px-2 ui button primary " >  <img src="@iconPath" width="20" height="20" style="margin-right:5px;" asp-append-version="true" alt=""> @service.ServiceName </a>
+    }
+</div>
+<!-- our recent work -->
+<div class="recent-work">
+    <h1>Our Recent Work</h1>
+    <div class="works">
+        @{ var i = 0;}
+        @foreach (var portfolio in Model.Portfolios)
+                {
+                    i++;
+            <div class="work-@i same">
+                <a href="#">
+                    <img src="@portfolio.PhotoPath" asp-append-version="true" />
+                </a>
+            </div>
+
+        }
+
+    </div>
+    <div class="two-btn">
+        @foreach (var service in ViewBag.Services)
+        {
+            var iconPath = "~/Image/Services/" + service.IconPath;
+            <a asp-controller="Portfolio" asp-action="ServicePortfolio" asp-route-Ser_Id="@service.id" class="px-2 ui  button primary">  <img src="@iconPath" width="20" height="20" style="margin-right:5px;" asp-append-version="true" alt=""> @service.ServiceName </a>
+        }
+    </div>
+</div>
+<!-- testimonials -->
+<section class="testimonials">
+    <div class="test-heading">
+        <h1>What Clients Say</h1>
+        <p>Reviews From Our Happy Clients</p>
+    </div>
+    <div class="tests">
+        <div class="left-arrow"></div>
+
+
+        <div class="test-slide">
+
+            @foreach (var review in Model.Reviews)
+            {
+                var UserImage = "~/Image/User/" + review.UserPhoto;
+                <div class="card">
+                    <img src="@UserImage" asp-append-version="true" alt="">
+                    <div class="review-stars d-flex">
+                        <!-- for loop star -->
+                        @for (int j = 1; i <= review.Rating; j++)
+                        {
+                            <img src="~/Image/Dev/Orange_star.svg" alt="">
+                        }
+
+                    </div>
+                    <p>
+                        @review.Desc
+                    </p>
+                </div>
+            }
+        </div>
+        <div class="right-arrow"></div>
+    </div>
+    <a asp-controller="Home" asp-action="testimonials" class="goto-testimonial">See All Reviews</a>
+</section>
+
+
+
+<div id="myModal_" class="modal" role="dialog" style="display:none">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header ">
+                <h4 class="modal-title"><i class="fas fa-shopping-cart"></i>Discount Form</h4>
+                <button type="button" class="close" data-dismiss="modal">Back</button>
+            </div>
+            <div class="modal-body">
+                <h2>Thanks For Reaching Design Guro </h2>
+                <h4>Please Check the Promo Code We have Emailed you</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModalFail_" class="modal" role="dialog" style="display:none">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header ">
+                <h4 class="modal-title"><i class="fas fa-shopping-cart"></i>Discount Form</h4>
+                <button type="button" class="close" data-dismiss="modal">Back</button>
+            </div>
+            <div class="modal-body">
+                <h2>Thanks For Reaching Design Guro </h2>
+                <h4>
+                    Unable To Submit Discount Form. Sorry for Inconvenience
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts
+    {
+
+    <script src="~/js/DiscountForm.js"></script>
+
+}

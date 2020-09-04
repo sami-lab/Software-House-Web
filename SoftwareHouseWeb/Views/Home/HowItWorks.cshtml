@@ -1,0 +1,71 @@
+﻿@model string
+@{
+    ViewData["Title"] = "HowItWorks";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="howitworks flex">
+    <div class="headPortfolio">How it Works</div>
+</div>
+<div class="details flex ">
+    <div class="detailscontent ">
+        <h1 class="heading">
+            With us, getting your customized @Model
+             is a piece of cake
+        </h1>
+        <p class="content flex">As a @Model  Firm, we realize the importance of @Model in your business. We can deliver your custom @Model in one day. We also offer as many revisions as you like. We guarantee that our work will make your company stand out from the rest of the crowd and make a long lasting impression on your clients.</p>
+    </div>
+    <div class="img">
+        <img src="~/Image/Dev/cake-piece.png" asp-append-version="true" alt="">
+    </div>
+</div>
+<div class="iconsection ">
+
+
+    <div class="icon">
+
+        <div class="iconimg">
+            <img src="~/Image/Dev/icon1.png"  asp-append-version="true" alt="">
+        </div>
+        <div class="icondetails">
+            <h1>You Fill Out the Order Form.</h1>
+            <p>Once you choose the package for your corporate  @Model.Split(" ")[0] you want to order, fill out our simple and secure order form with the information about your company and design specifications for your @Model. Confirm the order by paying the amount due.</p>
+        </div>
+    </div>
+    <div class="icon">
+
+        <div class="iconimg">
+            <img src="~/Image/Dev/icon2.png" alt="">
+        </div>
+        <div class="icondetails">
+            <h1>We Assign Designers to Your Project...</h1>
+            <p>We will assign designers to your  @Model.Split(" ")[0] project according to the package you choose and your relevant industry. Work on your @Model concepts will start immediately.</p>
+        </div>
+    </div>
+
+    <div class="icon">
+
+        <div class="iconimg">
+            <img src="~/Image/Dev/icon3.png" asp-append-version="true" alt="">
+        </div>
+        <div class="icondetails">
+            <h1>You Receive the  @Model.Split(" ")[0] Samples...</h1>
+            <p>You'll receive @Model.Split(" ")[0] samples at your account area and your account manager will explain you the details of the concept. You can review and select the one you like, if needed, you can ask for revision</p>
+        </div>
+    </div>
+
+    <div class="icon">
+
+        <div class="iconimg">
+            <img src="~/Image/Dev/icon4.png" asp-append-version="true" alt="">
+        </div>
+        <div class="icondetails">
+            <h1>
+                You Receive the Final @Model.Split(" ")[0] in Different File Formats...
+            </h1>
+            <p>Once you make the final choice, you will receive all the different file formats and  @Model.Split(" ")[0] ownership. Remember, you will still be entitled to our after-sales support (for life!) and can contact us for any further assistance.</p>
+        </div>
+
+    </div>
+
+</div>

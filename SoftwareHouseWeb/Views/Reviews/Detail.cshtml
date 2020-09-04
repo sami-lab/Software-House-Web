@@ -1,0 +1,121 @@
+﻿@model SoftwareHouseWeb.ViewModel.ReviewViewModel.ReviewViewModel
+
+@using System.Globalization;
+
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    ViewData["Title"] = "Detail";
+}
+
+@{ 
+    var PhotoPath = "~/Image/User/" + (Model.UserPhoto ?? "emp.jpg");
+}
+
+    <div class="col-md-6 col-sm-12 col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="name-pic mb-3 d-flex align-items-center">
+                    <img src="@PhotoPath" class="rounded-circle" alt="">
+                    <h5 class="ml-3 card-title">@Model.UserName</h5>
+                </div>
+
+                <p class="card-text"> @Model.Desc</p>
+                <div class="review-stars d-flex">
+                    <!-- for loop star -->
+                    @for (int i = 1; i <= Model.Rating; i++)
+                    {
+                        <img src="~/Image/Dev/Orange_star.svg" asp-append-version="true" alt="">
+                    }
+
+                </div>
+                <p class="card-text">
+                    <small class="text-muted">Added at @Model.created_At.ToLongTimeString()</small>
+                </p>
+                @if (User.IsInRole("Admin"))
+                {
+                    if(Model.reviewStatus == SoftwareHouseWeb.Data.Models.Review.ReviewStatus.WaitingForApproval)
+                    {
+                       <a asp-controller="Reviews" asp-action="Edit" asp-route-id="@Model.User_Id" class="btn btn-primary">Approve</a>
+                    }
+                   @await Html.PartialAsync("~/Views/Shared/Modal.cshtml", Model.id)
+                }
+
+            </div>
+        </div>
+
+    </div>
+
+
+@section Scripts{
+    <style>
+        .sticky-navbar {
+            display: grid;
+            position: relative;
+        }
+    </style>
+    <script>
+
+        //star
+        var stars = document.querySelectorAll('svg');
+        // console.log(stars)
+        //    stars.forEach(star =>{
+        //        $(star).on('click',()=>{
+        //         for (let i = 0; i < star.id; i++) {
+        //            $(stars[i]).css('fill',"#ffc107")
+        //             stars[i].active = true;
+
+        //         }
+        //         for (let i = 0; i < 5; i++) {
+
+
+        //         }
+        //        })
+        //    })
+        let starval = 0;
+        stars.forEach(star => {
+
+            $(star).click(() => {
+                for (let i = 0; i < star.id; i++) {
+                    $(stars[i]).css('fill', "yellow")
+                    starval++;
+
+                }
+
+                for (let i = 1; i <= 5; i++) {
+                    if (stars[i - 1].id > star.id) {
+                        $(stars[i - 1]).css('fill', 'white')
+
+                    }
+
+                }
+                $('#review-star')[0].value = star.id
+            })
+        })
+
+        $('#submit').click(() => {
+            var name_ = $('#name_').val()
+            var feedmsg = $('#feedmsg').val()
+            var reviewStar = $('#review-star').val()
+            var dp = $('input[type=file]').val()
+
+
+
+            if (name_ && feedmsg && reviewStar && dp) {
+                if (feedmsg.length >= 200) {
+                    $('form').triggerHandler('submit')
+                }
+                else {
+                    event.preventDefault();
+                    alert("Message Too Short")
+                }
+            }
+            else {
+                event.preventDefault();
+                alert('Empty fields')
+
+            }
+        })
+
+
+    </script>
+}

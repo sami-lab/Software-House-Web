@@ -1,0 +1,94 @@
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+body{
+    overflow-x: hidden;
+
+}
+html{
+    font-size: 62.5%;
+    font-family: var(--font-primary); 
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+:root{
+    --font-stylish:'Pacifico', cursive;
+    --font-primary:'Farro', sans-serif;
+    --font-head:'Montserrat', sans-serif;
+    --raleway:'Raleway', sans-serif;
+}
+
+
+.head .banner h2{
+		/* font-family: 'Roboto Condensed', sans-serif; */
+		
+		padding: 5rem 7rem 4rem 22rem;
+		color: white; 
+		font-size: 4rem;
+		font-weight: 60rem; 
+		background-image: url("../img/b1.jpg");
+		
+}
+
+.head .firsttext{
+	    font-size: 2.4rem;
+	    padding: 0.5rem 7rem;	
+	    margin-top: 5rem;
+		margin-left:10rem;
+		font-weight: 550;
+		color:#403333;
+}
+
+.head ul{
+	margin-left:10rem;
+	margin-bottom: 5rem;
+	color:#403333;
+}
+
+.list{
+	padding: 0rem 7rem;
+	line-height: 2.9rem;
+	font-size: 1.5rem; 
+	font-weight: 700;
+	list-style: none;
+}
+
+.list a{
+	text-decoration:none; 
+	color: #337ab7;
+}
+
+.list i{
+	font-size: 1.5rem;
+  color: red;
+}
+
+
+
+.info{
+	margin-bottom: 10rem;
+	margin-left:17rem;
+	margin-right: 17rem;
+	color:#403333;	
+}
+
+.info span{
+	font-size: 3.5rem;
+	margin-bottom: 0.5rem
+}
+
+.info p{
+	font-size: 1.6rem;
+}
+
+.info .box{
+	background-color: #e3e5e5;
+	margin-left:2rem;
+	margin-right:2rem;
+	padding: 1.5rem 2rem 1.5rem 2rem; 
+}

@@ -1,0 +1,462 @@
+.getstarted{
+    height: 20rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+font-size: 1.2rem;
+}
+.getstarted > *{
+    margin-left: 10rem;
+}
+.getstarted h1{
+    font-size: 4rem;
+    text-transform: capitalize
+}
+.stepper{
+    height: 20rem;
+    background: rgba(22, 22, 22, 0.055);
+    display: grid;
+    grid-template-columns: repeat(14,7fr);
+    grid-template-rows: 40fr 60fr;
+ 
+    /* grid-template-areas: ". . . line line line line line line line line . . ." 
+                            ". . lint lint lint lint lint lint lint lint lint lint . ."; */
+                ;font-family: var(--raleway);
+}
+
+.line{
+    grid-area: line;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.356);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.circle{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+background: rgb(124, 124, 124);
+transform: translate(-1rem,1rem);
+color: white;
+font-weight: bold;
+font-size: 12px;
+}
+.circle-setting{
+    display: flex;
+    align-items: flex-end;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.37);
+}
+.offset-1{
+    grid-column: 1 / 4;
+}
+.col-1
+{
+    grid-column: 4/ 6;
+  
+}
+.col-2{
+    grid-column: 6 / 8;
+}
+.col-3{
+    grid-column: 8 / 10;
+}
+.col-4{
+    grid-column: 10 / 12;
+}
+.offset-2{
+    grid-column: 12 / 15;
+}
+.offset-3{
+grid-column: 1 / 3;
+}
+.col-5{
+    grid-column: 3 / 5;
+}
+.col-6{
+    grid-column: 5 / 7;
+}
+.col-7{
+    grid-column: 7 / 9;
+}
+.col-8{
+    grid-column: 9 / 11;
+}
+.col-9{
+    grid-column: 11 / 13;
+}
+.lint{
+    grid-area: lint;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.lint h3{
+    margin-right: 3rem;
+}
+.maincontainer{
+    height: 50rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signup-form{
+    height: 100%;
+    width: 70%;
+    background: rgb(238, 245, 241);
+    border: 1px solid rgba(0, 0, 0, 0.295);
+}
+.head{
+    display: flex;
+    height: 30%;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--raleway);
+}
+.head h1{
+    font-size: 3rem;
+}
+.head > *{
+    margin: 5rem;
+}
+#login{
+    color: var(--green);
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.field , .button{
+    font-family: var(--raleway) !important;
+    
+}
+label{
+    font-size: 1.6rem !important;
+}
+input , label
+{    width: 80% !important;
+margin-left: 15rem !important
+}
+select{
+margin-left: 15rem !important;
+
+width: 87% !important;
+}
+#phone{
+    width: 60% !important;
+}
+.button{
+    position: relative;
+    left: 43%;
+    margin-top: 20px !important;
+    width: 10rem;
+    height: 2rem;
+    display: flex;
+    align-items: center !important;
+    font-size: 1.6rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px;
+    background: var(--primary-blue) !important;
+}
+input , select{
+     border: 1px solid rgba(0, 0, 0, 0.336) !important;
+
+}
+input:focus , select:focus{
+    border: 1px solid rgba(17, 147, 233, 0.473) !important;
+}
+#heading{
+    height: 10rem;
+    background: var(--primary-blue);
+    font-family: var(--font-head);
+    color: white;
+    font-size: 3rem;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+justify-content: center;
+transform: translateX(-200rem);
+opacity: 0;
+animation: slide 500ms ease-out 100ms 1 normal forwards;
+}
+
+@keyframes slide{
+    from{
+        opacity: 0;
+transform: translateX(-200rem)
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+.buttons
+{
+    height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttons > a div{
+    width: 15rem;
+    height: 6rem;
+  
+    padding: 0 2rem;
+    /* border-radius: 2rem; */
+    color: white;
+    font-family: VAR(--font-head);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    background: rgba(26, 85, 70, 0.699);
+    margin: 1rem;
+}
+.buttons > a div:hover{
+    background: rgba(58, 58, 58, 0.699);
+
+}
+.logo-p{
+    /* background: lightgreen; */
+}
+
+.webdes-p{
+    /* background: lightslategrey/; */
+}
+.webdev-p
+{
+    /* background: lightsalmon; */
+}
+.goto-top{
+    width: 7rem;
+    height: 7rem;
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    border-radius: 50%;
+    background: rgba(26, 85, 70, 0.699);
+    position: fixed;
+    z-index: 999;
+    display: flex;
+    justify-content: center;align-items: center;
+}
+.goto-top img{
+    width: 50%;
+    height: 50%;
+    transform: rotate(270deg)
+    
+}
+/* order summary */
+.order-summary{
+    
+   display: grid;
+   justify-items: center;
+   align-items: center;
+   grid-template-rows: minmax(90rem,min-content);
+}
+
+.main-summary{
+    
+    width: 70%;
+    background-color: rgba(22, 22, 22, 0.055);
+    display: grid;
+    grid-template-columns: 5fr 45fr 45fr 5fr;
+    grid-template-rows: 8rem min-content 12rem 8rem 10rem 10rem 8rem;
+    grid-template-areas: ". sum-head sum-head ."
+                            ". sum-details sum-details ."
+                            ". sum-dis sum-price ."
+                            ". sum-head2 sum-head2 ."
+                            ". sum-option1 sum-option1 ."
+                            ". sum-option2 sum-option2 ."
+                            ". sum-btn sum-btn .";
+                            font-family: var(--raleway);
+    grid-gap: 2rem;
+
+}
+.sum-head{
+    grid-area: sum-head;
+    display: flex;
+    align-items: center;
+}
+.sum-details{
+    grid-area: sum-details;
+    display: grid;
+    grid-template-rows: 10rem repeat(auto-fit,10rem);
+    
+}
+.details-headings{
+    background-color: rgb(56, 56, 56);
+    display: grid;
+    grid-template-columns: 50fr 50fr;
+    grid-template-areas: "h1 h2";
+    color: white;
+}
+.details-headings > h1{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.h1{
+    grid-area: h1;
+    margin-left: 2rem;
+}
+.h2{
+    grid-area: h2;
+}
+
+.orders-content{
+    height: 10rem;
+    display: grid;
+    grid-template-columns: 50fr 50fr;
+    grid-template-areas: "order-name order-actprice ";
+ 
+}
+.orders-content > div{
+    background: white;
+    display: flex;
+    
+    align-items: center;
+}
+.orders-content > div p{
+    margin-left: 5rem;
+    font-size: 16px;
+}
+.order-name{
+grid-area: order-name;
+}
+
+.order-actPrice{
+    grid-area: order-actprice;
+    display: flex;
+    justify-content: center;
+}
+
+.sum-dis{
+    grid-area: sum-dis;
+    background: white;
+    display: grid;
+    grid-template-rows: 40fr 60fr;
+}
+.sum-dis-1{
+    display: flex;
+    align-items: center;
+
+}
+.sum-dis-1 h1{
+    margin-left: 2rem;
+}
+.sum-dis form {
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+}
+.sum-dis form input{
+    margin: 0 !important;
+    height: 2.5rem;
+    font-size: 16px;
+    padding: 1rem;
+    transition: 500ms ease;
+    width: 25rem !important;
+    border: rgb(141, 141, 141);
+}
+.sum-dis form input:focus{
+    border: rgb(40, 146, 160);
+}
+.sum-dis form button{
+    font-size: 2rem;
+    width: 12rem !important; 
+    height: 4.6rem;
+    background: rgb(40, 146, 160);
+    color: white;
+    border: none;
+    transition: 500ms ease;
+cursor: pointer;
+}
+.sum-dis form button:hover{
+    background: rgb(13, 48, 53);
+
+}
+.sum-dis form button:focus{
+    background: rgb(13, 48, 53);
+
+}
+.sum-price{
+    grid-area: sum-price;
+
+    background: white;
+    display: grid;
+    grid-template-rows: 50fr 50fr;
+    grid-template-columns: 50fr 50fr;
+  
+    align-items: center;
+}
+.sum-price h1:nth-child(even){
+    color: teal;
+}
+.sum-price h1{
+    margin-left: 40%;
+}
+.sum-head2{
+    grid-area: sum-head2;
+    display: flex;
+    align-items: center;
+}
+.sum-option1{
+    grid-area: sum-option1;
+}
+.sum-option2{
+    grid-area: sum-option2;
+}
+.sum-option1 , .sum-option2{
+    background: white;
+    display: flex;
+    align-items: center;
+   cursor: pointer;
+}
+.sum-option1 input, .sum-option2  input{
+    margin:0 !important;
+    width: 10rem !important ;
+    cursor: pointer;
+}
+.sum-btn{
+    grid-area: sum-btn;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sum-btn button{
+    font-size: 16px;
+    height: 5rem;
+    width: 25rem;
+    background-color: teal;
+    color: white;
+    cursor: pointer;
+    transition: 500ms ease;
+}
+.sum-btn button:hover{
+    background: rgb(13, 48, 53);
+
+}
+
+.hidden-form {
+    /* visibility: hidden; */
+}
+/* //thanks */
+
+.thanku-cont{
+    height: 50vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+.thanku-cont h1{
+    font-size: 4rem;
+    margin-bottom: 10px;
+    color: rgb(1, 72, 100);
+}

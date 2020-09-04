@@ -1,0 +1,195 @@
+/* why-us */
+.why-choose-us{
+	margin-top: 4rem;
+	height: 50rem;
+	/* background: linear-gradient(rgba(44, 155, 219, 0.411),rgba(49, 150, 197, 0.479)),url("../img/services.jpg");
+	background-attachment: fixed;
+	background-size: 100% 100% , cover; */
+    background:var(--green);
+    color: white;
+	display: grid;
+	grid-template-columns: 10fr 40fr 40fr 10fr;
+	grid-template-rows: 20fr 35fr 35fr 10fr;
+	grid-column-gap: 5rem;
+	grid-template-areas: ". heading heading ."
+						". satis exper ."
+						". craft support ."
+}
+.heading{
+	grid-area: heading;
+	font-size: 3rem;
+	text-align: center;
+	margin-top: 3rem;
+}
+.satisfaction{
+	grid-area: satis;
+}
+.experience{
+	grid-area: exper;
+}
+.craft{
+	grid-area:craft;
+}
+.support{
+grid-area: support;
+}
+.why-choose-us > div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.why-choose-us > div div{
+	margin-left: 3rem;
+	font-size: 1.4rem;
+
+}
+.why-choose-us > div div h1{
+	font-size: 2rem;
+	padding-bottom: 1rem;
+}
+.why-choose-us > div img{
+height: 10rem;
+}
+
+/* footer */
+
+footer{
+    background: rgb(32, 32, 32);
+    
+    height: 50rem;
+    display: grid;
+    grid-template-rows: 75fr 25fr;
+    grid-template-columns: 10fr repeat(5,18fr) 10fr;
+    grid-template-areas: ". servs sitename legel contact pay  ."
+                        "foot foot foot foot foot foot foot";
+                        
+}
+footer > * ul li a:hover{
+    text-decoration: underline;
+}
+.servs{
+    grid-area: servs;
+    margin-top: 15%;display: grid;
+    justify-content: center;
+}
+
+.servs ul li , .sitename ul li , .legel ul li , .payment  , .contact ul li{
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    list-style: none;
+    color: white;
+    font-family: var(--font-head);
+
+   
+}
+
+
+.sitename{
+grid-area: sitename;
+margin-top: 15%;display: grid;
+    justify-content: center;
+
+}
+.legel{
+    grid-area: legel;
+    margin-top: 15%;display: grid;
+    justify-content: center;
+}
+.payment{
+    grid-area: pay;
+    margin-top: 15%;
+    font-family: var(--font-head);
+  
+}
+.payment > *{
+transform: translateY(1rem);
+transform: translateX(3rem)
+}
+.payment img:nth-child(-n+5){
+height: 2rem;
+display: inline-block;
+margin: 1rem 0.5rem;
+}
+.payment img:nth-child(6){
+    display: block;
+   margin-top: 1rem;
+}
+.contact{
+    margin-top: 15%;display: grid;
+    justify-content: center;
+
+    grid-area: contact;
+}
+.foot{
+    grid-area: foot;
+    background: rgb(15, 15, 15);
+    display: grid;
+    text-align: center;
+    font-size: 1.2rem;
+    
+    align-items: center;
+    color: rgb(63, 61, 58)
+}
+
+@media only screen and (max-width:562px){
+.why-choose-us{
+    margin-top: 4rem;
+height: 120rem;
+    background:var(--green);
+    color: white;
+	display: grid;
+	grid-template-columns: 10fr 80fr 10fr;
+	grid-template-rows: 10fr repeat(4,20fr) 10fr;
+	grid-column-gap: 5rem;
+	grid-template-areas: ". heading ."
+                        ". satis  ."
+                        ". exper ."
+                        ". craft ."
+                        ".  support ."
+                        
+}
+footer{
+    height:min-content;
+
+    grid-template-rows: 36fr 36fr 26fr;
+    grid-template-columns: 10fr repeat(3,36fr) 10fr;
+    grid-template-areas: ".   servs legel contact ."
+                        ".  sitename pay pay ."
+                        " foot foot foot foot foot";
+}
+
+.payment img:nth-child(6){
+    width: 100px;
+    height: 100px;
+    margin-top: 0;
+}
+.payment{
+    margin-top: 10%;
+}
+.servs{
+    justify-content: start;
+}
+.legel{
+    display: block;
+}
+.sitename{
+   justify-content: start;
+}
+.foot p{
+  margin: 15px;
+}
+}
+@media only screen and (max-width:425px){
+ footer{
+    height: min-content
+ }
+ .foot p{
+     font-size: 10px;
+ }   
+
+}
+@media only screen and (max-width:425px){
+    .why-choose-us{
+        grid-template-columns: 1fr;
+    }
+}

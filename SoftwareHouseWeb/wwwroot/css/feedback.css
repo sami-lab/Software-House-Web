@@ -1,0 +1,117 @@
+.container{
+  
+    display: grid;
+    grid-template-columns: minmax(5rem,1fr) 120rem minmax(5rem,1fr) ;
+    background: rgba(82, 82, 82, 0.178);
+    grid-template-areas: ". main ."
+                      
+                        "foot foot foot";
+    grid-template-rows: minmax(80vh,min-content) 20vh;
+    font-family: var(--raleway);
+}
+.main{
+    grid-area: main;
+    background: white;
+    display: grid;
+    grid-template-rows: 20fr 80fr;
+
+}
+.header{
+    margin: 5rem;
+   
+}
+.header h1{
+    margin-bottom: 1rem;
+}
+
+form{
+
+}
+
+form .row{
+    margin: 0 4rem;
+    display: grid;
+    grid-template-rows: minmax(7rem,min-content);
+    grid-template-columns: 50fr 50fr;
+    align-items: center;
+    justify-items: center;
+}
+.row input{
+    height: 50%;
+    width: 60%;
+transition: 300ms ease;
+padding: 0.5rem 2rem;
+font-family: var(--raleway);
+justify-self: start;
+font-size: 16px;
+
+}
+
+.row input:focus{
+    outline: solid var(--primary-blue) 1px;
+}
+.row:nth-child(odd){
+    background: rgba(238, 238, 238, 0.555);
+}
+.star {
+    justify-self: start;
+}
+.star svg{
+    stroke: black;
+    stroke-width: 10px;
+    fill:white;
+    cursor: pointer;
+    
+}
+.active-star{
+    fill: #ffc107;
+}
+textarea {
+    resize: none;
+    height: 20rem;
+    width: 40rem;
+    margin: 2rem 0;
+    font-family: var(--raleway);
+    padding: 7px 10px;
+    font-size: 16px;
+   justify-self: start;
+    transition: 300ms ease;
+}
+textarea:focus{
+    outline: solid var(--primary-blue) 1px;
+
+}
+button{
+    padding: 2rem 4rem;
+    cursor: pointer;
+    background: var(--green);
+    transition: 300ms ease;
+    color: white;
+    justify-self: start;
+    letter-spacing: 1px;
+}
+button:hover{
+    background: var(--dark-green);
+}
+button:focus{
+   outline: none;
+}
+.foot{
+    grid-area: foot;
+    background: rgba(43, 43, 43, 0.801);
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+.foot > a{
+    padding: 0 2rem;
+    font-size: 10px;
+}
+.foot a:nth-child(2){
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+a:hover{
+    text-decoration: underline;
+}

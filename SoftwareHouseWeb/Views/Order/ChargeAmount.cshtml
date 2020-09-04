@@ -1,0 +1,106 @@
+﻿@model SoftwareHouseWeb.ViewModel.OrderViewModel.PaymentGatwayViewModel
+@using Microsoft.Extensions.Options
+@inject IOptions<SoftwareHouseWeb.Services.Stripe.StripeSetting> Stripe
+@{
+    ViewData["Title"] = "ChargeAmount";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+ if (TempData["Message"] != null)
+            {
+<h2>TempData["Message"]</h2>
+            }
+<h2>Checkout Form</h2>
+<div class="row">
+    <div class="col-75">
+        <div class="container">
+            <form method="post">
+                <div class="row">
+                    <div class="col-58">
+                        <input asp-for="order_id" hidden />
+                        <h3>Billing Address</h3>
+                        <label asp-for="cus_name"><i class="fa fa-user"></i><b>Full Name</b></label>
+                        <input asp-for="cus_name" placeholder="Full Name">
+                        <label asp-for="Email"><i class="fa fa-envelope"></i><b>Email</b></label>
+                        <input asp-for="Email" placeholder="Email Address">
+                        <label asp-for="Address"><i class="fa fa-address-caed-o"></i><b>Address</b></label>
+                        <input asp-for="Address" placeholder="Address">
+                        <label asp-for="cus_phone"><i class="fa fa-institution"></i><b>Phone No</b></label>
+                        <input asp-for="cus_phone" placeholder="Phone no">
+                        <div class="row">
+                            <div class="col-50">
+                                <label asp-for="State"><b>State</b></label>
+                                <input asp-for="State" placeholder="PP">
+                            </div>
+                            <div class="col-50">
+                                <label asp-for="Zip"><b>Zip</b></label>
+                                <input asp-for="Zip" placeholder="10001">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Payment</h3>
+                        <label for="fname"><b>Accepted Card</b></label>
+                        <div class="icon-container">
+                            <i class="fa fa-cc-visa" style="color:navy"></i>
+                            <i class="fa fa-cc-amex" style="color:blue"></i>
+                            <i class="fa fa-cc-mastercard" style="color:red"></i>
+                            <i class="fa fa-cc-discover" style="color:orange"></i>
+                        </div>
+                    </div>
+                </div>
+                @if (Model.PaymentMethod == SoftwareHouseWeb.Data.Models.Orders.PaymentMethods.Stripe)
+                {
+                    <script src="//checkout.stripe.com/v2/checkout.js"
+                            class="stripe-button"
+                            data-key="@Stripe.Value.PublicKey"
+                            data-name="Design Guro"
+                            data-label="Pay @Model.TotalAmount"
+                            data-description="Be Smart with Smart Choice"
+                            data-locale="auto"
+                            data-amount="@Model.TotalAmount"></script>
+
+                    <input asp-for="StripeToken" hidden />
+                }
+                else
+                {
+                    <section id="ph">
+                        <label asp-for="CardName"><b>Name on Card</b></label>
+                        <input asp-for="CardName" placeholder="Card Name">
+                        <label asp-for="CardNum"><b>Credit Card</b></label>
+                        <input asp-for="CardNum" placeholder="xxxx-xxxx-xxxx">
+                        <label asp-for="ExpiryMonth"><b>Exp Month</b></label>
+                        <input asp-for="ExpiryMonth" asp-format="{0:MM}">
+                        <div class="row">
+                            <div class="col-50">
+                                <label asp-for="Year"><b>Exp Year</b></label>
+                                <input asp-for="Year" asp-format="{0:yyyy}" placeholder="xxxx">
+                            </div>
+                            <div class="col-50">
+                                <label asp-for="cvv"><b>CVV</b></label>
+                                <input asp-for="cvv" placeholder="xxx">
+                            </div>
+                        </div>
+                    </section>
+                    <label><input type="checkbox" checked:"checked" name="sameadr">Shipping address same as billing address</label>
+                }
+                <input type="submit" value="Continue to checkbox" class="btn">
+            </form>
+        </div>
+    </div>
+    <div class="col-25">
+        <div class="container">
+            <h4>Card<span class="price" style="color: black"><i class="fa fa-shopping-cart"></i><b>@Model.OrderPackages.Count</b></span></h4>
+            @foreach (var product in Model.OrderPackages)
+            {
+                <p><a asp-controller="Packages" asp-action="Detail" asp-route-id="@product.pkg_Id">@product.PkgName</a><span class="price">$@product.price</span></p>
+
+            }
+            <hr>
+            <p>Total <span class="price" style="color: black"><b>$@Model.TotalAmount</b></span></p>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <link href="~/css/Payment.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}

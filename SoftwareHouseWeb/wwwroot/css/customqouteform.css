@@ -1,0 +1,144 @@
+.get-in-touch{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    text-align: center;
+    font-size: 1.6rem;
+    height: 23rem;
+    font-family: var(--raleway);
+}
+.get-in-touch p{
+    padding: 1rem 0;
+    color: rgba(0, 0, 0, 0.555);
+
+}
+.line{
+    margin-top: 2rem;
+    width: 50px;
+    height: 4px;
+    background: rgb(36, 121, 190);
+}
+.formsection{
+    height: 50rem;
+    /* background: lightgreen; */
+    display: grid;
+    grid-template-columns: repeat(2,45fr);
+    grid-column-gap: 30px;
+    grid-template-rows: 1fr;
+    grid-template-areas: "contacts send"
+    
+
+}
+input , select , textarea{
+border: 1px solid rgba(0, 0, 0, 0.671) !important;
+transition: all 500ms ease;
+}
+input:focus , textarea:focus{
+    border: 1px solid rgb(52, 177, 182) !important;
+}
+.left{
+    grid-area: contacts;
+    display: grid;
+ font-family: var(--font-head); 
+    grid-row-gap: 5px;
+grid-template-rows: repeat(auto-fit,19fr);
+grid-template-columns: 1fr;
+}
+.left > div{
+    margin-left: 5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.555);
+}
+.left-same{
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-template-areas: "icon textpart";
+    /* background: rgb(136, 27, 27); */
+}
+.left-same img{
+    grid-area: icon;
+    width: 3rem;
+    height: 3rem;
+    padding: 2rem 3rem;
+    align-self: center;
+
+}
+.left-same .text-part{
+    font-size: 1.2rem;
+    align-self: center;
+    grid-area: textpart;
+}
+
+
+.social-links h2{
+    font-size: 2rem;
+    margin-left: 9rem;
+}
+.social-links img{
+display: inline-block;
+width: 2.6rem;
+height: 2.6rem;
+cursor: pointer;
+border-radius: 50%;
+border: 1px solid black;
+padding: 1.3rem;
+margin-top: 1rem;
+margin-right: 1rem;
+transition: transform 300ms ease;
+}
+.social-links img:nth-child(2){
+    margin-left: 8rem;
+}
+.social-links img:hover{
+    transform: rotate(360deg)
+}
+.send{
+    grid-area: send;
+    display: grid;
+    /* justify-content: center; */
+    font-family: var(--raleway)
+    
+}
+.send h1{
+    padding: 2rem 0;
+}
+.form{
+    font-family: var(--raleway);
+    color: black;
+    
+}
+.form label{
+    font-size: 1.4rem !important;
+}
+/* .send input {
+    width: 80% !important;
+} */
+/* .send select{
+width: 94% !important;
+} */
+#msg{
+    resize: none;
+    font-size: 1.4rem;
+    font-family: var(--font-primary);
+    width: 96%;
+}
+.submit{
+    height: 4rem !important;
+    width: 6rem !important;
+    display: flex
+    !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem !important;
+}
+#name{
+    width: 90% !important
+}
+.form select{
+    margin: 20px 0; 
+}
+#code{
+width: 90% !important;
+margin-bottom: 10px;
+/* transform: translateX(10px); */
+}

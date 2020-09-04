@@ -1,0 +1,342 @@
+:root{
+    --color-primary: rgb(224, 224, 48);
+    --black:rgb(37, 37, 37);
+}
+nav{
+    background: var(--black);
+    border-bottom: 5px solid var(--color-primary);
+}
+.mobile-nav,.mobile-menu{
+    background: var(--black);
+}
+.nav-items h3::after {    
+   
+    background: var(--color-primary);
+   
+  }
+.nav-item-expand{
+background: var(--color-primary);
+top: 12rem;
+
+}
+.nav-item-expand * , .nav-item-expand-sticky *{
+    color: black !important;
+}
+.sticky-navbar{
+    background: var(--black);
+    border-bottom: 5px solid var(--color-primary);
+}
+.nav-item-expand-sticky{
+    background: var(--color-primary);
+    
+
+}
+.sticky-items h3::after {    
+   
+    background: var(--color-primary);
+    
+   
+  }
+ /* / * header */ 
+header{
+	height: 45vw;
+	background-attachment: fixed;
+	background:linear-gradient(rgba(20, 31, 34, 0.349),rgba(236, 232, 10, 0.678)) ,url("/img/webdev-header.jpg");
+    background-size: 100% 200% , cover;
+    background-attachment: fixed;
+display: flex;
+align-items: center;
+justify-content: center;
+
+
+
+}
+.text-content{
+font-family: var(--raleway);    
+
+color: white;
+flex-flow: column;
+
+}
+
+.text-content h1{
+    font-size: 4.5rem;
+
+    
+}
+.text-content h2{
+    font-size: 2rem;
+
+
+}
+.text-content > *{
+    margin-top: 1rem;
+    transform: translateX(-20rem);
+
+
+}
+.text-content p{
+    font-size: 1.6rem;
+animation: slide 1s ease-out 500ms 1 normal forwards;
+
+}
+.text-content ul{
+    margin-top: 4rem;
+    font-size: 1.6rem;
+    margin-left: 5rem;
+animation: slide 1s ease-out 600ms 1 normal forwards;
+
+}
+.text-content ul li{
+    list-style: none;
+}
+.text-content ul li::before{
+    content:'';
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    background: url('/img/tick.svg');
+    background-repeat: no-repeat;
+    transform: translate(-3rem,0.3rem);
+    
+}
+.text-content > * {
+    padding: 1rem 0;
+}
+.custom-website{
+    width: 100%;
+    margin-top: 5rem;
+    display: grid;
+
+    grid-template-columns: 10fr 40fr 40fr 10fr;
+    grid-template-rows: minmax(70rem,max-content)
+    ;
+    /* background: lightcoral; */
+    grid-template-areas: ". leftyp rightyp .";
+    grid-column-gap: 5rem;
+
+}
+.leftyp{
+    grid-area: leftyp;
+    display: grid;
+  
+    /* transform: translateX(-200rem); */
+    font-size: 1.4rem;
+    font-family: var(--font-head);
+    grid-template-rows: repeat(auto-fit,minmax(5rem,max-content));
+    grid-row-gap: 2rem;
+}
+.leftyp > *{
+    padding: 1rem 0;
+}
+.leftyp h2{
+    color: var(--color-primary)
+}
+.leftyp ul{
+margin-left: 4rem;
+list-style: none;
+}
+.leftyp ul li::before{
+    content:'';
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    background: url('/img/tick.svg');
+    background-repeat: no-repeat;
+    transform: translate(-3rem,0.3rem);
+}
+.rightyp{
+    grid-area: rightyp;
+    display:grid;
+  
+    /* justify-content: center; */
+    align-content: space-around
+}
+.form{
+    background: var(--black)
+    ;color: white;
+    font-family: var(--raleway ) !important;
+    width: 100% !important;
+    font-size: 1.4rem !important;
+padding: 2rem 0rem 2rem 3rem;
+}
+.form > *{
+    margin-top: 10px !important;
+}
+.form label{
+    color:  white !important;
+
+}
+.field input ,.field textarea {
+    width: 90% !important;
+    height: 2.4rem !important;
+    font-family: var(--raleway ) !important
+
+}
+
+.field select{
+    height: 4.4rem !important;
+    width:95% !important;
+}
+.field select option{
+    height: 4.4rem !important;
+}
+ .button{
+    height: 5rem !important;
+    width: 15rem !important;
+    font-size: 1.4rem !important;
+    text-transform: uppercase !important; 
+    font-family: var(--raleway ) !important;
+
+}
+.rightyp img{
+    width: 100%;
+}
+.show{
+    animation: oa 300ms ease-out 300ms 1 normal forwards;
+   
+}
+@keyframes oa{
+    0%{
+        transform: translateX(-20rem);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+.recent-work{
+    margin-top: 5rem;
+    display: grid;
+    grid-template-rows: 10rem minmax(60rem,1fr) 10rem;
+    grid-template-columns: minmax(5rem,1fr) minmax(22rem,110rem) minmax(5rem,1fr);
+    grid-template-areas: ". h ."
+                            ". works ."
+                            ". twobtn ."
+}
+.recent-work h1:nth-child(1){
+grid-area: h;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 3rem;
+}
+.works{
+    grid-area: works;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,20rem);
+
+    grid-gap: 9rem;
+    justify-content: center;
+}
+.same{
+    width: 25rem;
+    height: 50rem;
+   position: relative;
+
+}
+.works div{
+    overflow: hidden;
+}
+.same  img{
+    width: 25rem;
+    height: 100%;
+    transition: all 500ms ease;
+
+}
+
+.same:hover img {
+transform: scale(1.2);
+cursor: pointer;
+
+}
+button {
+    background-color: var(--green) !important;
+    transition: background 300ms ease;
+}
+.two-btn{
+    grid-area: twobtn;
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+.two-btn button{
+    font-family: var(--raleway) !important;
+    /* width: 20rem !important; */
+    padding: 1rem 3rem;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+.two-btn button:focus{
+    outline: none;
+}
+ button:hover{
+    background: var(--dark-green) !important;
+}
+@media only screen and (max-width:768px){
+    header{
+       height: 80rem;
+    }
+    .custom-website{
+       
+        grid-template-columns:10fr 80fr 10fr ;
+        grid-template-rows: repeat(2,minmax(35rem,min-content)) 
+        ;
+        /* background: lightcoral; */
+        grid-template-areas: ". leftyp  ."
+                            ". rightyp .";
+        grid-row-gap: 5rem;
+    
+    }
+    .text-content ul li{
+        font-size: 12px;
+    }
+}
+@media only screen and (max-width:700px){
+    .text-content > *{
+   
+        transform: translateX(0rem);
+
+    
+    }
+    .text-content h1 ,.text-content h2 , .text-content p {
+        text-align: center;
+    }
+    .text-content ul{
+        margin-top: 4rem;
+        font-size: 1.6rem;
+        margin-left: 10rem;
+   
+    
+    }
+    .text-content ul li::before{
+        width: 12px;
+        height: 12px;
+        transform: translate(-3rem,0rem);
+    }
+    .leftyp ul li{
+        font-size: 12px;
+    }
+    .leftyp ul li::before{
+   
+        width: 12px;
+        height: 12px;
+      
+
+        transform: translate(-3rem,0.3rem);
+    }
+ 
+}
+@media only screen and (max-width:375px){
+.custom-website{
+    grid-template-columns:2fr 96fr 2fr ;
+}
+
+.form{
+padding: 2rem 0rem 2rem 2rem;
+
+}
+}

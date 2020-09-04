@@ -1,0 +1,211 @@
+.container{
+  
+    display: grid;
+    grid-template-columns: minmax(5rem,1fr) 120rem minmax(5rem,1fr) ;
+    background: rgba(82, 82, 82, 0.178);
+    grid-template-areas: ". main ."
+                      
+                        "foot foot foot";
+    grid-template-rows: minmax(80vh,min-content) 20vh;
+    font-family: var(--raleway);
+}
+.main{
+    grid-area: main;
+    background: white;
+    display: grid;
+    grid-template-rows: 15rem minmax(20rem,min-content) minmax(15rem,min-content) 25rem 3rem;
+    grid-template-columns: 10fr 80fr 10fr;
+    grid-template-areas: ". profile-name ."
+                        ". p-alerts ."
+                        ". recent ."
+                        ". cpanel ."
+                        ". . .";
+    grid-gap: 10px;
+    grid-row-gap: 30px;
+}
+.profile-name
+{
+    grid-area: profile-name;
+   display: flex;
+justify-content: space-between;
+   align-items: center;
+   font-size: 2rem;
+}
+.profile-name p{
+    color: rgb(0, 87, 109);
+    text-decoration: underline;
+    cursor: pointer;
+}
+.profile-name p:hover{
+    text-decoration: none;
+}
+.p-alerts
+{
+   
+    grid-area: p-alerts;
+    display: grid
+    ;
+    grid-template-rows: 5rem repeat(auto-fit,7rem) ;
+    grid-row-gap: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.164);
+    background: rgba(0, 0, 0, 0.205);
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    padding-bottom: 1rem;
+}
+.alert-head{
+    background: rgb(46, 46, 46);
+    color: white;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    display: flex;
+    align-items: center;
+}
+.alert-head h1{
+    margin-left: 2rem;
+ 
+}
+.alert-row{
+    height: 7rem;
+    background: white;
+    margin:0 1rem;
+    display: flex;
+    align-items: center;
+}
+.alert-row img{
+    height: 60%;
+    width: 10%;
+}
+body p{
+    font-size: 14px;
+}
+.alert-row a{
+    /* margin-left: 4rem; */
+    font-size: 1.4rem;
+}
+.alert-row a:hover{
+    text-decoration: underline;
+}
+.recent{
+    /* background: lightcoral; */
+    grid-area: recent;
+    display: grid
+    ;
+    grid-template-rows: 5rem repeat(auto-fit,5rem) ;
+    grid-row-gap: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.164);
+    background: rgba(0, 0, 0, 0.205);
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    padding-bottom: 1rem;
+}
+.recent-row{
+    height: 5rem;
+    background: white;
+    margin: 0 1rem;
+    display: grid;
+    grid-template-columns: 10fr 40fr 30fr 20fr;
+    grid-template-areas: "na . pldus date";
+}
+.na{
+    grid-area: na;
+}
+.na a:hover{
+    text-decoration: underline;
+}
+.recent-row > div{
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+}
+.recent-row > div:nth-child(n){
+margin-left: 2rem;
+}
+.order-description{
+grid-area: pldus;
+}
+.date{
+    grid-area: date;
+}
+.recent-head{
+    background: rgb(46, 46, 46);
+    color: white;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    display: flex;
+    align-items: center;
+}
+.recent-head h1{
+    margin-left: 2rem;
+
+}
+.cpanel{
+    grid-area: cpanel;
+    display: grid;
+    grid-template-rows: 20fr 80fr;
+    grid-template-areas: "da" "adda";
+}
+.da{
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    background: rgb(46, 46, 46);
+    color: white;
+    grid-area: da;
+    display: flex;
+    align-items: center;
+}
+.da h1{
+    margin-left: 2rem;
+
+}
+.adda{
+    grid-area: adda;
+    background: rgba(0, 0, 0, 0.164);
+    display: grid;
+    grid-template-columns: 5rem repeat(2,50fr) 5rem;
+    grid-template-areas: ". l r .";
+    font-size: 14px;
+}
+.adda > *{
+display: grid;
+}
+.l  , .r{
+    margin: 1rem 0;
+}
+.l{
+    background: white;
+    grid-area: l;
+}
+.r{
+    background: white;
+    grid-area: r;
+}
+ul{
+    list-style: none;
+}
+ul > *{
+    margin: 1rem;
+}
+li{
+    margin-left: 2rem;
+}
+.foot{
+    grid-area: foot;
+    background: rgba(43, 43, 43, 0.801);
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+.foot > a{
+    padding: 0 2rem;
+    font-size: 10px;
+}
+.foot a:nth-child(2){
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+a:hover{
+    text-decoration: underline;
+}
+

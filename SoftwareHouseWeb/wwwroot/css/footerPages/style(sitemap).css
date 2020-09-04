@@ -1,0 +1,78 @@
+*{
+	margin: 0;
+	padding: 0;
+	
+}
+
+body{
+    overflow-x: hidden;
+
+}
+html{
+    font-size: 62.5%;
+    font-family: var(--font-primary); 
+}
+
+a {
+	text-decoration: none;
+	color: #337ab7;	
+}
+a i{
+	font-size: 1.3rem;
+  	color: red;
+}
+:root{
+    --font-stylish:'Pacifico', cursive;
+    --font-primary:'Farro', sans-serif;
+    --font-head:'Montserrat', sans-serif;
+    --raleway:'Raleway', sans-serif;
+}
+
+ul{
+	list-style: none;
+}
+
+.head .banner h2{
+		/* font-family: 'Roboto Condensed', sans-serif; */
+		
+		padding: 4rem 7rem 4rem 22rem;
+		color: white; 
+		font-size: 4rem;
+		font-weight: 60rem; 
+		background-image: url("../img/b1.jpg");
+}
+
+.head .firsttext{
+	    font-size: 3.5rem;
+	    padding: 0.5rem 7rem;	
+	    margin-top: 2rem;
+		margin-left:14rem;
+		font-weight: 550;
+		color:#403333;
+		margin-bottom: 1.5rem;
+}
+
+.column {
+  float: left;
+  width: 28%;
+  margin-bottom: 8rem;
+}
+
+.row {
+	margin-left:10%;
+}
+
+.row ul{
+	font-size: 1.5rem;
+	line-height: 3rem;
+}
+
+.row span{
+	font-size: 1.9rem
+}
+
+@media screen and (max-width: 700px) {
+  .column {
+    width: 100%;
+  }
+}

@@ -1,0 +1,41 @@
+﻿@model SoftwareHouseWeb.ViewModel.OrderViewModel.UpdateOrderStatus
+@using SoftwareHouseWeb.Data.Models.Orders
+
+<span>
+    <a href="#/" class="mt-2 btn btn-danger" data-toggle="modal" data-target="#status_@Model.order_id">Update Status</a>
+</span>
+
+<div class="modal fade" id="status_@Model.order_id">
+    <div class="modal-dialog modal-dialog-centered"
+         role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Status</h5>
+                <button type="button" class="close"
+                        data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form asp-controller="Order" asp-action="UpdateStatus" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label>Order Status</label>
+                        <input asp-for="order_id" hidden />
+                        <select asp-for="orderStatus" class="form-control input-flat"
+                                asp-items="Html.GetEnumSelectList<OrderStatus>()">
+                            <option value="">Please Select</option>
+                        </select>
+                        <span asp-validation-for="orderStatus" class="text-danger col-12"></span>
+                    </div>
+
+                    <button type="submit"
+                            class="btn btn-primary">
+                        Update
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

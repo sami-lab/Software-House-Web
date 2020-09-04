@@ -1,0 +1,28 @@
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+body{
+    overflow-x: hidden;
+
+}
+html{
+    font-size: 62.5%;
+    font-family: var(--font-primary);
+
+    
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+:root{
+    --font-stylish:'Pacifico', cursive;
+    --font-primary:'Farro', sans-serif;
+    --font-head:'Montserrat', sans-serif;
+    --raleway:'Raleway', sans-serif;
+}
+button{
+  font-size: 1.6rem !important;
+}

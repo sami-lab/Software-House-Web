@@ -1,0 +1,174 @@
+﻿@model SoftwareHouseWeb.Data.ApplicationUser
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    ViewData["Title"] = "Profile";
+    var PhotoPath = "~/Image/User/" + (Model.Photopath ?? "emp.jpg");
+}
+<div class="row">
+    <div class="col-lg-12 col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="media align-items-center mb-4">
+                    <img class="mr-3" src="@PhotoPath" asp-append-version="true" width="80" height="80" alt="">
+                    <div class="media-body">
+                        <h3 class="mb-0">@Model.Name</h3>
+                        <p class="text-muted mb-0">@Model.Country</p>
+                    </div>
+                </div>
+
+                <h4>About Me</h4>
+                <p class="text-muted">Hi, I'm  @Model.Name, </p>
+                <ul class="card-profile__info">
+                    <li class="mb-1"><strong class="text-dark mr-4">Mobile</strong> <span>@Model.PhoneNumber</span></li>
+                    <li><strong class="text-dark mr-4">Email</strong> <span>@Model.Email</span></li>
+                    <li><strong class="text-dark mr-4">Email</strong> <span>@Model.UserName</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="profile-name">
+    <h1>
+        @Model.Name's Account
+    </h1>
+    <p><a asp-controller="Account" asp-action="Logout">Sign Out</a></p>
+</div>
+@if (Model.Customer != null)
+{
+    if (Model.Customer.Order.Any(x => x.PaymentStatus != SoftwareHouseWeb.Data.Models.Orders.PaymentStatus.Paid))
+    {
+        <div class="p-alerts">
+            <div class="alert-head">
+                <h1>Alerts</h1>
+            </div>
+            @foreach (var order in Model.Customer.Order.Where(x => x.PaymentStatus != SoftwareHouseWeb.Data.Models.Orders.PaymentStatus.Paid))
+            {
+                <div class="alert-row">
+                    <img src="~/Image/Dev/warn.svg" asp-append-version="true" alt="">
+                    <p>  Payment For Your Order <a asp-controller="Order" asp-action="Detail" asp-route-id="@order.order_id" style="font-weight:200"> {ORDER#@order.order_id}</a> is Pending</p>
+                </div>
+            }
+
+        </div>
+    }
+    else
+    {
+        <div class="recent">
+            <div class="recent-head">
+                <h1>No Unpaid Order</h1>
+                <a asp-controller="Order" asp-action="Create">Create New Order Now</a>
+            </div>
+        </div>
+    }
+}
+@if (Model.Customer != null)
+{
+    if (Model.Customer.Order.Any())
+    {
+        <div class="recent">
+            <div class="recent-head">
+                <h1>Recent Orders</h1>
+            </div>
+            @foreach (var order in Model.Customer.Order)
+            {
+                //string packages = String.Join("\n", order.OrderPackages.Select(x => x.Packages.PkgName));
+                <div class="recent-row">
+                    <div class="na">
+                        <a asp-controller="Order" asp-action="Detail" asp-route-id="@order.order_id">Details</a>
+                    </div>
+                    <div class="order-description">
+                        <h3><a asp-controller="Order" asp-action="Detail" asp-route-id="@order.order_id" style="font-weight:200"> {ORDER#@order.order_id}</a> </h3>
+                    </div>
+                    <div class="date">
+                        <h3>@order.Date</h3>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="recent">
+            <div class="recent-head">
+                <h1>No Orders Register Yet</h1>
+            </div>
+            <div class="recent-row">
+                <a asp-controller="Order" asp-action="Create">Create New Order Now</a>
+            </div>
+        </div>
+    }
+}
+else
+{
+        <div class="recent">
+            <div class="recent-head">
+                <h1>No  Orders Register Yet</h1>
+               
+            </div>
+            <div class="recent-row">
+                <a asp-controller="Order" asp-action="Create">Create New Order Now</a>
+            </div>
+
+        </div>
+}
+<div class="cpanel">
+    <div class="da">
+        <h1>Control Panel</h1>
+    </div>
+    <div class="adda">
+        <div class="l">
+
+            <ul>
+                <li>
+                    <h3>
+                        Profile Management
+                    </h3>
+                </li>
+                <li><a asp-controller="Account" asp-action="Edit">View/Update your Profile (?)</a></li>
+                <li><a asp-controller="Account" asp-action="UpdateCommunication">View/Update Communication (?)</a></li>
+                <li><a asp-controller="Account" asp-action="ChangePassword">Change Password (?)</a></li>
+            </ul>
+
+            <ul>
+                <li>
+                    <h3>
+                        Feedback
+                    </h3>
+                </li>
+                <li><a asp-controller="Reviews" asp-action="AddFeedback">Give Suggestions/Feedback (?)</a></li>
+            </ul>
+        </div>
+        <div class="r">
+            <ul>
+                <li>
+                    <h3>
+                        Actions
+                    </h3>
+                </li>
+                <li><a asp-controller="Order" asp-action="Create">	Place New Order (?)</a></li>
+                @if (Model.Customer != null)
+                {
+                    if (Model.Customer.Order.Any(x => x.PaymentStatus != SoftwareHouseWeb.Data.Models.Orders.PaymentStatus.Paid))
+                    {
+                        <li><a asp-controller="Order" asp-action="PayMyAmount">Pay for Awaiting Orders (?)</a></li>
+                    }
+                }
+                <li><a asp-controller="Account" asp-action="Logout">Signout</a></li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <style>
+        .sticky-navbar {
+            display: grid;
+            position: relative;
+        }
+    </style>
+    <link rel="stylesheet" href="~/css/profile.css">
+}
+

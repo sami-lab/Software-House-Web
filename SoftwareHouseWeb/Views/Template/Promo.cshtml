@@ -1,0 +1,31 @@
+﻿@model SoftwareHouseWeb.ViewModel.Promo.PromoEmailViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div style="background-color:#DC3545">
+    <h2>
+        Discount offer: @Model.PromoDiscount % off
+    </h2>
+</div>
+<div style="display:flex">
+    <!--Gift Icon-->
+    <div style="width:20%; text-align:center" class="col text-center"> <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fen%2Ffree-png-zprhf&psig=AOvVaw3ksHVKfdn4dxhjiIgN7JN4&ust=1593179489624000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMj_ibiOneoCFQAAAAAdAAAAABAD" /> </div>
+    <!--Modal Text-->
+    <div style="width:80%">
+        <p>Dear @Model.Name,We care for our visitors and from time to time we provide small gifts to them. You are the lucky one today!</p>
+        <h6> Hurry! Copy the below code and use it at checkout within <u>a day</u> </h6>
+        <h3 class="text1">@Model.PromoCode</h3>
+    </div>
+</div>
+<hr />
+<a href="@Model.Url" style="padding:5px; background-color:#DC3545" class="btn btn-danger">Get it now  </a>
+<style>
+    .text1 {
+        background-color: #dc3545;
+        color: white;
+        width: 20%;
+        margin-top: 5%;
+        text-align: center
+    }
+</style>

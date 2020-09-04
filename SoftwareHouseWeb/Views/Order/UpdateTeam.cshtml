@@ -1,0 +1,64 @@
+﻿@model SoftwareHouseWeb.ViewModel.OrderViewModel.SetupTeam
+
+<div class="bootstrap-modal">
+    
+    <!-- Modal -->
+
+    <div class="modal fade" id="myModel_@Model.order_id">
+        <div class="modal-dialog modal-dialog-centered"
+             role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Setup Team</h5>
+                    <button type="button" class="close"
+                            data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form asp-controller="Order" asp-action="ManageTeam" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label>Start Date</label>
+                            <input asp-for="StartDate"
+                                   class="form-control input-flat"
+                                   required />
+                        </div>
+                        <div class="form-group">
+                            <label for="">Dead line</label>
+                            <input asp-for="EndDate"
+                                   class="form-control input-flat"
+                                   required placeholder="Dead line" />
+                        </div>
+                        <input asp-for="order_id" hidden />
+
+
+                        <p>Setup Team</p>
+                        <div class="form-group">
+
+                            @for (int i = 0; i < Model.Members.Count; i++)
+                            {
+                                <div class="form-check m-1">
+                                    <input type="hidden" asp-for="@Model.Members[i].Employee_id" />
+                                    <input type="hidden" asp-for="@Model.Members[i].EmployeeName" />
+                                    <input type="hidden" asp-for="@Model.Members[i].Position" />
+                                    <input type="hidden" asp-for="@Model.Members[i].order_id" />
+                                    <input asp-for="@Model.Members[i].IsSelected" class="form-check-input" />
+                                    <label class="form-check-label" asp-for="@Model.Members[i].IsSelected">
+                                        @Model.Members[i].EmployeeName @Model.Members[i].Position
+                                    </label>
+                                </div>
+                            }
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-primary">
+                            Start
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
